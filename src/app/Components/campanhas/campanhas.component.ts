@@ -18,13 +18,12 @@ export class CampanhasComponent{
     private authService: AuthService,
     private router: Router,
     private logging: LoggingService
-  ){
-    this.isLoading = this.logging.isLoading;
-  }
+  ){ }
 
   ngOnInit(): void{
     this.authService.login(1, 'admin', "fakeToken");
     this.logging.checkLogin();
+    this.isLoading = this.logging.isLoading;
     this.idUser = this.authService.getIdUser();
     this.typeUser = this.authService.getTypeUser();
   }
