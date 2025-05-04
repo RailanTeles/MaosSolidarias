@@ -18,12 +18,6 @@ export class LoggingService {
       this.router.navigate(['login']);
     } 
 
-    if(this.authService.isLogged == null){
-      this.isLoading = true;
-    } else{
-      this.isLoading = false;
-    }
-
     if(this.authService.isLogged == true){
       this.isLoading = false;
     }

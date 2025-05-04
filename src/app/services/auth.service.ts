@@ -13,6 +13,7 @@ export class AuthService {
     if (token) {
     // const decoded: any = jwtDecode(token);
     // login(decoded.id, decoded.tipo, token)
+    this.isLogged = true; //Tirar isso depois, pois é redundante
     } else {
       this.isLogged = false;
     }

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { LoggingService } from '../../services/logging.service';
+import { CarregandoComponent } from '../carregando/carregando.component';
 
 @Component({
   selector: 'app-campanhas',
-  imports: [],
+  imports: [CarregandoComponent],
   templateUrl: './campanhas.component.html',
   styleUrl: './campanhas.component.css'
 })
@@ -21,11 +22,15 @@ export class CampanhasComponent{
   ){ }
 
   ngOnInit(): void{
-    this.authService.login(1, 'admin', "fakeToken");
-    this.logging.checkLogin();
-    this.isLoading = this.logging.isLoading;
-    this.idUser = this.authService.getIdUser();
-    this.typeUser = this.authService.getTypeUser();
+    const interval = setInterval(() => {
+      this.logging.checkLogin();
+      if(this.authService.isLogged !== null){
+        clearInterval(interval);
+        this.isLoading = this.logging.isLoading;
+        this.idUser = this.authService.getIdUser();
+        this.typeUser = this.authService.getTypeUser();
+      }
+    }, 2);
   }
   
 }
