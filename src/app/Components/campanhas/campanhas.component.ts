@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { LoggingService } from '../../services/logging.service';
 
 @Component({
   selector: 'app-campanhas',
