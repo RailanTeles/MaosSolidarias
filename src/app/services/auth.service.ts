@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private idUser: number | null = null;
   private typeUser: "admin" | "doador" | null = null;
-  public isLogged: boolean | null = null;
+  public isLogged: boolean = false;
 
   constructor() { 
     const token = localStorage.getItem('token');
