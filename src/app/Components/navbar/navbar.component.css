@@ -1,0 +1,30 @@
+#logo{
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#lineNavbar{
+    width: 2%;
+    height: 60px;
+    background-color: #A90713;
+    border-radius: 10px;
+}
+
+#pages{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#pages > a{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#pages > a > img{
+    width: 70%;
+}
