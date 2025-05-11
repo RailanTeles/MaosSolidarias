@@ -23,7 +23,7 @@ app-navbar{
     width: 100%;
     height: auto;
     background-color: #F53D4B;
-    padding: 0px 3%;
+    padding: 10px 3%;
     align-items: center;
     justify-content: space-between;
     border-bottom-left-radius: 20px;

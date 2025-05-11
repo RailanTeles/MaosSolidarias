@@ -5,8 +5,12 @@
     justify-content: space-evenly;
 }
 
+#logo > img{
+    width: 50%;
+}
+
 #lineNavbar{
-    width: 2%;
+    width: 5px;
     height: 60px;
     background-color: #A90713;
     border-radius: 10px;
@@ -27,4 +31,24 @@
 
 #pages > a > img{
     width: 70%;
+}
+
+@media screen and (max-width: 780px){
+    #logo{
+        width: 30%;
+    }
+
+    #pages{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #logo{
+        width: 40%;
+    }
+
+    #pages{
+        width: 60%;
+    }
 }
