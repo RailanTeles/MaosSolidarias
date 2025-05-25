@@ -26,4 +26,8 @@
         </div>
     </div>
     <button type="submit" id="submit">Salvar Campanha</button>
+
+    @if(mensagem){
+        <p [style.color]="corMensagem">{{ mensagem }}</p>
+    }
 </form>

@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private idUser: number | null = null;
-  private typeUser: "ADMIN" | "DOADOR" | null = null;
+  idUser: number | null = null;
+  typeUser: "ADMIN" | "DOADOR" | null = null;
   public isLogged: boolean = false;
 
   constructor() { 

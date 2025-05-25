@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FormAdicionarComponent } from './form-adicionar/form-adicionar.component';
+import { Campanha } from '../../models/campanha.model';
 
 @Component({
   selector: 'app-campanhas',
@@ -11,17 +12,17 @@ import { FormAdicionarComponent } from './form-adicionar/form-adicionar.componen
   styleUrl: './campanhas.component.css'
 })
 export class CampanhasComponent{
-  isLoading: boolean = true;
-  idUser!: number | null;
-  typeUser!: "admin" | "doador" | null;
-
+  // Construtor
   constructor(
     private authService: AuthService,
     private router: Router,
   ){ }
 
+  // Variaveis
   abrirFormCampanha: boolean = false;
+  campanhas : Array<Campanha> = [];
   
+  // Métodos
   FormCampanha(){
     if(this.abrirFormCampanha == false){
       this.abrirFormCampanha = true;

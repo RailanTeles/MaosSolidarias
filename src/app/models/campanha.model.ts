@@ -1,5 +1,5 @@
 export class Campanha {
-    id: number;
+    id?: number;
     nome: string;
     descricao: string;
     metaArrecadacao: number;
@@ -8,8 +8,7 @@ export class Campanha {
     dtFim: Date;
 
 
-    constructor(id: number, nome: string, descricao: string, metaArrecadacao: number, valorAtual: number, dtInicio: Date, dtFim: Date){
-        this.id = id;
+    constructor( nome: string, descricao: string, metaArrecadacao: number, valorAtual: number, dtInicio: Date, dtFim: Date){
         this.nome = nome;
         this.descricao = descricao;
         this.metaArrecadacao = metaArrecadacao;
