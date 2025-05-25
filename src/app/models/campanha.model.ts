@@ -4,18 +4,18 @@ export class Campanha {
     descricao: string;
     metaArrecadacao: number;
     valorAtual: number;
-    dataInicio: Date;
-    dataTermino: Date;
+    tdInicio: Date;
+    dtFim: Date;
 
 
-    constructor(id: number, nome: string, descricao: string, metaArrecadacao: number, valorAtual: number, dataInicio: Date, dataTermino: Date){
+    constructor(id: number, nome: string, descricao: string, metaArrecadacao: number, valorAtual: number, tdInicio: Date, dtFim: Date){
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.metaArrecadacao = metaArrecadacao;
         this.valorAtual = valorAtual;
-        this.dataInicio = dataInicio;
-        this.dataTermino = dataTermino;
+        this.tdInicio = tdInicio;
+        this.dtFim = dtFim;
     }
 
 }

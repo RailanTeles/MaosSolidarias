@@ -3,12 +3,12 @@ export class Usuario {
     cpf: number;
     nome: string;
     email: string;
-    telefone: number;
+    telefone: string;
     senha: string;
-    tipo: "admin" | "doador";
-    senhaPadrao: boolean;
+    tipo: "ADMIN" | "DOADOR";
+    primeiroAcesso: boolean;
 
-    constructor(id: number, cpf: number, nome: string, email: string, telefone: number, senha: string,  tipo: "admin" | "doador", senhaPadrao: boolean){
+    constructor(id: number, cpf: number, nome: string, email: string, telefone: string, senha: string,  tipo: "ADMIN" | "DOADOR", primeiroAcesso: boolean){
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -16,7 +16,7 @@ export class Usuario {
         this.telefone = telefone;
         this.senha = senha;
         this.tipo = tipo;
-        this.senhaPadrao = senhaPadrao;
+        this.primeiroAcesso = primeiroAcesso;
     }
 
 }
