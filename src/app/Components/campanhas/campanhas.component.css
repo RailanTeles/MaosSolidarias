@@ -1,0 +1,91 @@
+#title{
+    display: flex;
+    width: 100%;
+    padding: 1%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#title > h1{
+    font-size: 50px;
+    color: #A90713;
+    font-family: "Outfit SemiBold";
+}
+
+#AdicionarButton{
+    position: absolute;
+    right: 0;
+    margin-right: 2%;
+    background-color: #E81E2D;
+    padding: 1% 5%;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    font-family: "Outfit SemiBold";
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+#AdicionarButton:hover{
+    background-color: #A90713;
+    transform: scale(1.1);
+}
+
+#modalDiv{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10; 
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+app-form-adicionar{
+    width: 80%;
+    height: 98%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5%;
+    position: relative;
+    z-index: 12;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 780px){
+    #title{
+        justify-content: space-between;
+    }
+
+    #title > h1{
+        font-size: 30px;
+    }
+
+    #AdicionarButton{
+        font-size: 20px;
+    }
+
+    app-form-adicionar{
+        width: 90%;
+        height: 98%;
+        background-color: white;
+    }
+}

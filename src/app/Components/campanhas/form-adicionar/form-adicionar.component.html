@@ -1,0 +1,29 @@
+<div id="TitleCampanha">
+    <h1>Adicionar Campanha</h1>
+    <h1 id="Sair" (click)="fecharModal()">X</h1>
+</div>
+<form (ngSubmit)="SalvarCampanha($event)" [formGroup]="form_dados" id="FormCampanha">
+    <div class="FormRow">
+        <label for="nome">Nome:</label>
+        <input class="inputs" type="text" id="nome" placeholder="Digite o título da Campanha" required formControlName="nome">
+    </div>
+    <div class="FormRow">
+        <label for="descricao">Descrição:</label>
+        <textarea class="inputs" id="descricao" placeholder="Digite uma descrição para a Campanha" required formControlName="descricao"></textarea>
+    </div>
+    <div class="FormRow">
+        <label for="meta">Meta:</label>
+        <input class="inputs" type="number" id="meta" placeholder="Defina uma meta" required formControlName="metaArrecadacao">
+    </div>
+    <div class="FormRow" id="Dates">
+        <div class="FormDate">
+            <label for="dtInicio">Data de Inicio:</label>
+            <input class="inputs" type="date" id="dtInicio" required formControlName="dtInicio">
+        </div>
+        <div class="FormDate">
+            <label for="dtFim">Data de Término:</label>
+            <input class="inputs" type="date" id="dtFim" required formControlName="dtFim">
+        </div>
+    </div>
+    <button type="submit" id="submit">Salvar Campanha</button>
+</form>

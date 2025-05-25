@@ -1,2 +1,14 @@
 <app-navbar></app-navbar>
-<p>campanhas works!</p>
+<!-- Titulo -->
+<div id="title">
+    <h1>Campanhas</h1>
+    <button id="AdicionarButton" (click)="FormCampanha()">+ Adicionar</button>
+</div>
+
+<!-- Modal -->
+@if (abrirFormCampanha) {
+  <div id="modalDiv">
+    <div id="modal" (click)="FormCampanha()"></div>
+    <app-form-adicionar (fechar)="FormCampanha()"></app-form-adicionar>
+  </div>
+}
