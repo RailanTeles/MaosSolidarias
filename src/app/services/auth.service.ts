@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private idUser: number | null = null;
-  private typeUser: "admin" | "doador" | null = null;
+  private typeUser: "ADMIN" | "DOADOR" | null = null;
   public isLogged: boolean = false;
 
   constructor() { 
@@ -19,7 +19,7 @@ export class AuthService {
     }
   }
 
-  login( id: number, tipo: "admin" | "doador", token: string): void{
+  login( id: number, tipo: "ADMIN" | "DOADOR", token: string): void{
     this.idUser = id;
     this.typeUser = tipo;
     this.isLogged = true;
@@ -36,7 +36,7 @@ export class AuthService {
     return this.idUser;
   }
 
-  getTypeUser(): "admin" | "doador" | null{
+  getTypeUser(): "ADMIN" | "DOADOR" | null{
     return this.typeUser;
   }
 }
