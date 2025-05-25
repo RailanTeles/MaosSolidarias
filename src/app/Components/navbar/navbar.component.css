@@ -6,7 +6,7 @@
 }
 
 #logo > img{
-    width: 50%;
+    width: 35%;
 }
 
 #lineNavbar{
@@ -30,7 +30,7 @@
 }
 
 #pages > a > img{
-    width: 70%;
+    width: 50%;
 }
 
 @media screen and (max-width: 780px){
