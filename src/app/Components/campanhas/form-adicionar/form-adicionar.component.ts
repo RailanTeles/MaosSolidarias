@@ -59,14 +59,13 @@ export class FormAdicionarComponent {
       novaCampanha.dtInicio = formatarData(novaCampanha.dtInicio);
       novaCampanha.dtFim = formatarData(novaCampanha.dtFim);
 
-      console.log(novaCampanha);
       if (this.form_dados.valid) {
         this.campanhaService.criarCampanha(novaCampanha).subscribe(
           {
             next: (res) => {
               this.corMensagem = 'green';
               this.mensagem = res.msg || 'Campanha criada com sucesso!';
-              this.fecharModal();
+              this.form_dados.reset();
             },
             error: (err) => {
               this.corMensagem = 'red';

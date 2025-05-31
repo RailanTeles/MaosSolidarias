@@ -27,6 +27,6 @@ export class CampanhaService {
   criarCampanha(campanha: Campanha): Observable<any> {
     let campanhaJSON = JSON.stringify(campanha);
 
-    return this.http.post<any>(this.campanhaURL, campanhaJSON,  { headers: this.headers} );
+    return this.http.post<any>(this.campanhaURL, campanhaJSON, { "headers": this.headers} );
   }
 }
