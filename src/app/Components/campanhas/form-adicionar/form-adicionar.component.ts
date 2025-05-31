@@ -26,15 +26,6 @@ export class FormAdicionarComponent {
     };
 
     // Variáveis
-    // campanha : Campanha = {
-    //   nome: '',
-    //   descricao: '',
-    //   metaArrecadacao: 0,
-    //   dtInicio: new Date(),
-    //   dtFim: new Date(),
-    //   valorAtual: 0
-    // }
-
     mensagem: string | null = null;
     corMensagem: "red" | "green" | null = null;
 
@@ -53,18 +44,9 @@ export class FormAdicionarComponent {
       e.preventDefault();
       this.mensagem = null;
       let novaCampanha = Object.assign(this.form_dados.value);
-      // console.log(novaCampanha);
       if (this.form_dados.valid) {
         this.campanhaService.criarCampanha(novaCampanha);
         // this.corMensagem = "green";
-        // this.campanha = {
-        //     nome: this.form_dados.value.nome!,
-        //     descricao: this.form_dados.value.descricao!,
-        //     metaArrecadacao: Number(this.form_dados.value.metaArrecadacao!),
-        //     dtInicio: new Date(this.form_dados.value.dtInicio!),
-        //     dtFim: new Date(this.form_dados.value.dtFim!), 
-        //     valorAtual: 0
-        // };
 
       } else {
         this.corMensagem = "red";
