@@ -3,6 +3,7 @@ import { Campanha } from '../../../models/campanha.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { CampanhaService } from '../../../services/campanha.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-form-adicionar',
@@ -16,6 +17,7 @@ export class FormAdicionarComponent {
   constructor(
     private authService: AuthService,
     private campanhaService: CampanhaService,
+    private usuarioService: UsuarioService,
   ){ }
 
   // Importar o Evento de fechar o modal
@@ -45,9 +47,20 @@ export class FormAdicionarComponent {
       this.mensagem = null;
       let novaCampanha = Object.assign(this.form_dados.value);
       if (this.form_dados.valid) {
-        this.campanhaService.criarCampanha(novaCampanha);
-        // this.corMensagem = "green";
-
+        this.campanhaService.criarCampanha(novaCampanha).subscribe(
+          {
+            next: (res) => {
+              this.corMensagem = 'green';
+              this.mensagem = res.msg || 'Campanha criada com sucesso!';
+              this.fecharModal();
+            },
+            error: (err) => {
+              this.corMensagem = 'red';
+              this.mensagem = err.error?.msg || 'Erro ao salvar campanha.';
+              console.error('Erro na API:', err);
+            }
+          }
+        );
       } else {
         this.corMensagem = "red";
         this.mensagem = "Erro! Os seguintes campos não foram preenchdidos: "

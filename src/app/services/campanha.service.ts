@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Campanha } from '../models/campanha.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +13,18 @@ export class CampanhaService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": "tokenJWT" });
 
   constructor(
-    private http: HttpClient, auth: AuthService) { 
-      this.headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": ` Bearer ${auth.getToken()}` });
-    }
+    private http: HttpClient,
+    private auth: AuthService
+  ) {
+     this.headers = new HttpHeaders({ 
+      'Content-Type': 'application/json', 
+      "Authorization": `${auth.getToken()}`
+    });
+  }
 
-  // Adicionar uma Campanha
-  criarCampanha(campanha : Campanha){
+  criarCampanha(campanha: Campanha): Observable<any> {
     let campanhaJSON = JSON.stringify(campanha);
-    this.http.post<any>(this.campanhaURL, campanhaJSON, {
-      "headers" :
-      this.headers
-    }).subscribe({
-      next: data => {
-        return data; 
-      },
-      error: error =>{
-        console.log("Houve um erro:", error);
-      }
-    })
+
+    return this.http.post<any>(this.campanhaURL, campanhaJSON,  { headers: this.headers} );
   }
 }
