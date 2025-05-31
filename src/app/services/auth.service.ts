@@ -39,4 +39,8 @@ export class AuthService {
   getTypeUser(): "ADMIN" | "DOADOR" | null{
     return this.typeUser;
   }
+
+  getToken(): string | null{
+    return localStorage.getItem('token');
+  }
 }
