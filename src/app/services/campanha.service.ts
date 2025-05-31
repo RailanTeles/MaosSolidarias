@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 export class CampanhaService {
 
   private campanhaURL = 'http://localhost:5000/api/v1/campanha';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": "tokenJWT" });
+  private headers = new HttpHeaders({ 
+    'Content-Type': 'application/json', 
+    "Authorization": "tokenJWT" });
 
   constructor(
     private http: HttpClient,

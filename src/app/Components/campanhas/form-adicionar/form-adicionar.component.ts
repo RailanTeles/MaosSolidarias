@@ -46,6 +46,20 @@ export class FormAdicionarComponent {
       e.preventDefault();
       this.mensagem = null;
       let novaCampanha = Object.assign(this.form_dados.value);
+
+      const formatarData = (data: string | null) => {
+        if (!data) return '';
+        const d = new Date(data);
+        const dia = String(d.getDate()).padStart(2, '0');
+        const mes = String(d.getMonth() + 1).padStart(2, '0');
+        const ano = d.getFullYear();
+        return `${dia}/${mes}/${ano}`;
+      };
+
+      novaCampanha.dtInicio = formatarData(novaCampanha.dtInicio);
+      novaCampanha.dtFim = formatarData(novaCampanha.dtFim);
+
+      console.log(novaCampanha);
       if (this.form_dados.valid) {
         this.campanhaService.criarCampanha(novaCampanha).subscribe(
           {
