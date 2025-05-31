@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FormAdicionarComponent } from './form-adicionar/form-adicionar.component';
 import { Campanha } from '../../models/campanha.model';
+import { CampanhaService } from '../../services/campanha.service';
 
 @Component({
   selector: 'app-campanhas',
@@ -16,6 +17,7 @@ export class CampanhasComponent{
   constructor(
     private authService: AuthService,
     private router: Router,
+    private campanhaService: CampanhaService, 
   ){ }
 
   // Variaveis

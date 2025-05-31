@@ -40,7 +40,7 @@ export class AuthService {
     return this.typeUser;
   }
 
-  getToken(): string | null{
-    return localStorage.getItem('token');
+  getToken(): string {
+    return localStorage.getItem('token') ?? '';
   }
 }

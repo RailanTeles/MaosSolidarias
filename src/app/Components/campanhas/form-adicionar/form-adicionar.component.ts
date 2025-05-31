@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Campanha } from '../../../models/campanha.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
+import { CampanhaService } from '../../../services/campanha.service';
 
 @Component({
   selector: 'app-form-adicionar',
@@ -9,6 +11,13 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form-adicionar.component.css'
 })
 export class FormAdicionarComponent {
+
+  // Construtor
+  constructor(
+    private authService: AuthService,
+    private campanhaService: CampanhaService,
+  ){ }
+
   // Importar o Evento de fechar o modal
     @Output() fechar = new EventEmitter<void>();
 
@@ -17,14 +26,14 @@ export class FormAdicionarComponent {
     };
 
     // Variáveis
-    campanha : Campanha = {
-      nome: '',
-      descricao: '',
-      metaArrecadacao: 0,
-      dtInicio: new Date(),
-      dtFim: new Date(),
-      valorAtual: 0
-    }
+    // campanha : Campanha = {
+    //   nome: '',
+    //   descricao: '',
+    //   metaArrecadacao: 0,
+    //   dtInicio: new Date(),
+    //   dtFim: new Date(),
+    //   valorAtual: 0
+    // }
 
     mensagem: string | null = null;
     corMensagem: "red" | "green" | null = null;
@@ -43,16 +52,19 @@ export class FormAdicionarComponent {
     SalvarCampanha(e: SubmitEvent) {
       e.preventDefault();
       this.mensagem = null;
+      let novaCampanha = Object.assign(this.form_dados.value);
+      // console.log(novaCampanha);
       if (this.form_dados.valid) {
-        this.corMensagem = "green";
-        this.campanha = {
-            nome: this.form_dados.value.nome!,
-            descricao: this.form_dados.value.descricao!,
-            metaArrecadacao: Number(this.form_dados.value.metaArrecadacao!),
-            dtInicio: new Date(this.form_dados.value.dtInicio!),
-            dtFim: new Date(this.form_dados.value.dtFim!), 
-            valorAtual: 0
-        };
+        this.campanhaService.criarCampanha(novaCampanha);
+        // this.corMensagem = "green";
+        // this.campanha = {
+        //     nome: this.form_dados.value.nome!,
+        //     descricao: this.form_dados.value.descricao!,
+        //     metaArrecadacao: Number(this.form_dados.value.metaArrecadacao!),
+        //     dtInicio: new Date(this.form_dados.value.dtInicio!),
+        //     dtFim: new Date(this.form_dados.value.dtFim!), 
+        //     valorAtual: 0
+        // };
 
       } else {
         this.corMensagem = "red";
