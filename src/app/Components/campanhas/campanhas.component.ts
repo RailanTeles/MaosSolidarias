@@ -22,7 +22,14 @@ export class CampanhasComponent{
 
   // Variaveis
   abrirFormCampanha: boolean = false;
-  campanhas : Array<Campanha> = [];
+  listacampanhas : Array<Campanha> = [];
+  typeUser!: string | null; 
+  tamanhoCampanha: number = 0;
+
+  ngOnInit(){
+    this.typeUser = localStorage.getItem('tipo');
+    this.atualizarCampanhas(1);
+  }
   
   // Métodos
   FormCampanha(){
@@ -31,5 +38,33 @@ export class CampanhasComponent{
     } else {
       this.abrirFormCampanha = false;
     }
+  }
+
+  // Pegar as campanhas
+  atualizarCampanhas(pagina : number){
+    this.campanhaService.obterCampanhas(pagina).subscribe(
+      {
+        next:(res) =>{
+            res.campanhas.forEach((campanha: any) => {
+              campanha.dtInicio = campanha.dtInicio.substring(0, 10);
+              campanha.dtFim = campanha.dtFim.substring(0, 10);
+            });
+
+            // Fazer um para pegar as doações
+            this.listacampanhas = res.campanhas;
+            this.tamanhoCampanha = Math.ceil(res.total / 2);
+        },
+        error: (err) =>{
+          console.log(err);
+        }
+      }
+    )
+  }
+
+  // Largura da barra
+  getBarWidth(campanha: Campanha): string {
+    if (!campanha || !campanha.metaArrecadacao || campanha.metaArrecadacao === 0) return '0%';
+    const percent = (campanha.metaArrecadacao ?? 0) / campanha.metaArrecadacao * 100;
+    return `${percent}%`;
   }
 }

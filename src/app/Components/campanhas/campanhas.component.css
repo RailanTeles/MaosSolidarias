@@ -70,6 +70,216 @@ app-form-adicionar{
     justify-content: space-evenly;
 }
 
+/* Campanhas */
+#divCamp{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70%;
+    align-items: center;
+    justify-content: start;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+#noCamp{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#replacedCamp{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #A90713;
+    text-align: center;
+    font-family: "Outfit SemiBold";
+    gap: 2px;
+}
+
+#noCamp > img{
+    width: 40%;
+}
+
+#noCamp > h1{
+    font-size: 40px;
+}
+
+#noCamp > p{
+    font-size: 18px;
+}
+
+/* Cada Campanha */
+.Camps{
+    font-family: "Outfit SemiBold";
+    text-align: center;
+    min-width: 46%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 4px solid #A90713;
+    border-radius: 20px;
+    margin: 2%;
+    gap: 2%;
+}
+
+.section1{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.CampTitulo{
+    display: flex;
+    align-items: center;
+    background-color: #A90713;
+    color: white;
+    margin: 0.5% 0%;
+    padding: 1.5% 0%;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 25px;
+    font-family: "Outfit SemiBold";
+}
+
+.Infos{
+    display: flex;
+    align-items: center;
+    background-color: #E81E2D;
+    color: white;
+    margin: 0.5% 0%;
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 30px;
+    font-family: "Outfit SemiBold";
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.Infos:hover{
+    background-color: #A90713;
+    transform: scale(1.1);
+}
+
+.section2{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    background-color: #A90713;
+    color: white;
+    padding: 3%;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.section3{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rowDates{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.divDt{
+    width: 40%;
+    color: #A90713;
+}
+
+.divDt > p{
+    text-align: center;
+    font-family: "Outfit SemiBold";
+}
+
+.dates{
+    background-color: #A90713;
+    color: white;
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 3%;
+    margin: 1% 0%;
+}
+
+.rowValores{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1% 0%;
+}
+
+.valorTit{
+    width: 40%;
+    color: #A90713;
+    text-align: start;
+}
+
+.valorTit > p{
+    font-family: "Outfit SemiBold";
+}
+
+.valor{
+    width: 40%;
+    background-color: #A90713;
+    color: white;
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 1%;
+}
+
+.divBar{
+    width: 80%;
+    height: 50px;
+    border: 2px solid black;
+    align-self: center;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bar{
+    border-radius: 20px;
+    height: 110%;
+    background-color: #A90713;
+}
+
+.Camps > button{
+    height: 50px;
+    width: 100%;
+    background-color: #A90713;
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.3s ease; 
+}
+
+.Camps > button:hover{
+    background-color: #E81E2D;
+}
+
 @media screen and (max-width: 780px){
     #title{
         justify-content: space-between;
@@ -87,5 +297,44 @@ app-form-adicionar{
         width: 90%;
         height: 98%;
         background-color: white;
+    }  
+
+    /* Campanha */
+    #divCamp{
+        height: 80%;
     }
+
+    .Camps{
+        min-width: 96%;
+    }
+
+    .CampTitulo{
+        font-size: 20px;
+    }
+
+    .Infos{
+        padding: 0.5% 0%;
+        width: 15%;
+    }
+
+    .section2{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #replacedCamp > img{
+        width: 100%;
+    }
+
+    #noCamp > h1{
+        font-size: 30px;
+    }
+
+    #noCamp > p{
+        font-size: 15px;
+    }
+
+
+
 }

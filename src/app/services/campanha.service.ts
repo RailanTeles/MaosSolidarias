@@ -24,9 +24,18 @@ export class CampanhaService {
     });
   }
 
+  // Criar uma campanha
   criarCampanha(campanha: Campanha): Observable<any> {
     let campanhaJSON = JSON.stringify(campanha);
 
-    return this.http.post<any>(this.campanhaURL, campanhaJSON, { "headers": this.headers} );
+    return this.http.post<any>(this.campanhaURL, campanhaJSON, { "headers": this.headers } );
+  }
+
+  // Pegar todas as campanhas
+  obterCampanhas(pagina: number): Observable<any>{
+    return this.http.get<any>(
+      `${this.campanhaURL}?pagina=${pagina}&itensPorPagina=2`, 
+      {"headers": this.headers}
+    )
   }
 }

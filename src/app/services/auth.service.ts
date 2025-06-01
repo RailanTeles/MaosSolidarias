@@ -31,6 +31,7 @@ export class AuthService {
       ).pipe(
             map(data => {
             localStorage.setItem('token', data.token_jwt);
+            localStorage.setItem('tipo', data.usuario.tipo)
             return data;
           }), 
           catchError(error => {
