@@ -46,15 +46,15 @@ export class AuthService {
   }
 
 
-  getIdUser(): number | null {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decoded = jwtDecode<TokenPayload>(token);
-      console.log(decoded.id, decoded.tipo);
-      return 1
-    }
-    return 2
-  }
+  // getIdUser(): number | null {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     const decoded = jwtDecode<TokenPayload>(token);
+  //     console.log(decoded.id, decoded.tipo);
+  //     return 1
+  //   }
+  //   return 2
+  // }
 
   // getTypeUser(): "ADMIN" | "DOADOR" | null{
   //   return this.typeUser;

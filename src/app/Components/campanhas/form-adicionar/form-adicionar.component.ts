@@ -22,6 +22,7 @@ export class FormAdicionarComponent {
 
   // Importar o Evento de fechar o modal
     @Output() fechar = new EventEmitter<void>();
+    @Output() atualizar = new EventEmitter<void>();
 
     fecharModal() {
       this.fechar.emit();
@@ -44,6 +45,7 @@ export class FormAdicionarComponent {
     // Métodos
     SalvarCampanha(e: SubmitEvent) {
       e.preventDefault();
+      this.atualizar.emit();
       this.mensagem = null;
       let novaCampanha = Object.assign(this.form_dados.value);
 
