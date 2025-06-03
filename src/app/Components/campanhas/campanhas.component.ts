@@ -30,7 +30,7 @@ export class CampanhasComponent{
   ngOnInit(){
     this.typeUser = localStorage.getItem('tipo');
     this.atualizarCampanhas(1);
-    // this.authService.login("admin@unifan.br", "12345678").subscribe();
+    this.authService.login("admin@unifan.br", "12345678").subscribe();
   }
   
   // Métodos
