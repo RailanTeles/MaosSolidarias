@@ -26,6 +26,7 @@ export class FormAdicionarComponent {
 
     fecharModal() {
       this.fechar.emit();
+      this.atualizar.emit();
     };
 
     // Variáveis
