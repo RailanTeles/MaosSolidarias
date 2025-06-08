@@ -1,0 +1,29 @@
+#titlePerfil{
+   color: #A90713;
+   margin-left: 20%;
+   padding-top: 5%;
+   display: flex;
+
+}
+
+
+.Campo{
+margin-left: 15%;
+
+}
+
+
+.nome{
+color: white;   
+background-color: #A90713;
+margin-right: 4%;
+margin-top: 7%;
+width: 40%;
+height: 10%;
+border-radius: 20px;
+display: flex;
+padding: 3%;
+}
+
+
+
