@@ -1,1 +1,12 @@
-<p>doadores works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+        <div class="header">
+            <h1 class="title">Doadores</h1>
+
+            @if (typeUser == "ADMIN"){
+            <button class="add-btn" onclick="adicionarDoador()">+ Adicionar</button>
+            }
+        </div>
+
+

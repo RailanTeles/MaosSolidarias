@@ -1,0 +1,35 @@
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 200%;
+        }
+
+        .title {
+            color: #ca0b0b;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .add-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 26px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position:absolute;
+            top: 30%;
+            right: 5%;
+        }
+
+        .add-btn:hover {
+            background-color: #b71c1c;
+        }
