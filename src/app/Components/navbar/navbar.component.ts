@@ -11,4 +11,10 @@ export class NavbarComponent {
   constructor(
     private router: Router,
   ) {}
+
+  typeUser!: string | null;
+
+  ngOnInit(){
+    this.typeUser = localStorage.getItem('tipo');
+  }
 }
