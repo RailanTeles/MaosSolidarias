@@ -28,6 +28,8 @@ export class CampanhasComponent{
   paginaSelecionada: number = 1;
 
   ngOnInit(){
+    this.authService.login("admin@unifan.br", "12345678").subscribe();
+    // localStorage.setItem('tipo', 'normal');
     this.typeUser = localStorage.getItem('tipo');
     this.atualizarCampanhas(1);
   }
