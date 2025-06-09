@@ -28,9 +28,9 @@ export class CampanhasComponent{
   paginaSelecionada: number = 1;
 
   ngOnInit(){
+    this.authService.login("admin@unifan.br", "12345678").subscribe();
     this.typeUser = localStorage.getItem('tipo');
     this.atualizarCampanhas(1);
-    this.authService.login("admin@unifan.br", "12345678").subscribe();
   }
   
   // Métodos
@@ -54,7 +54,7 @@ export class CampanhasComponent{
 
             // Fazer um para pegar as doações
             this.listacampanhas = res.campanhas;
-            this.tamanhoCampanha = Math.ceil(res.total / 2);
+            this.tamanhoCampanha = res.qtdPaginas;
             this.paginaSelecionada = pagina;
         },
         error: (err) =>{
