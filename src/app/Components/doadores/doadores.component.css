@@ -15,21 +15,23 @@
             margin-bottom: 20px;
         }
         .add-btn {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            padding: 20px 40px;
-            border-radius: 10px;
-            font-size: 26px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position:absolute;
-            top: 30%;
-            right: 5%;
-        }
 
-        .add-btn:hover {
-            background-color: #b71c1c;
-        }
+    position: absolute;
+    right: 0;
+    margin-right: 2%;
+    background-color: #E81E2D;
+    padding: 1% 5%;
+    color: white;
+    font-size: 25px;
+    border: none;
+    top: 17%;
+    border-radius: 15px;
+    font-family: "Outfit SemiBold";
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.add-btn:hover{
+    background-color: #A90713;
+    transform: scale(1.1);
+}

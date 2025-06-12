@@ -19,7 +19,7 @@ export class CampanhasComponent{
     private router: Router,
     private campanhaService: CampanhaService, 
   ){ }
-
+  
   // Variaveis
   abrirFormCampanha: boolean = false;
   listacampanhas : Array<Campanha> = [];

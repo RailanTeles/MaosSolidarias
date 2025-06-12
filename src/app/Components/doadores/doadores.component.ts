@@ -7,12 +7,19 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './doadores.component.html',
   styleUrl: './doadores.component.css'
 })
+
 export class DoadoresComponent {
+  showModal = false; // Controla se o modal está visível
 
-  typeUser!: string | null;
+  // Outros códigos do componente...
 
-  ngOnInit(){
-    this.typeUser = localStorage.getItem('tipo');
+  // Função chamada quando clica no botão Adicionar
+  adicionarDoadores() {
+    this.showModal = true; // Mostra o modal
   }
 
+  // Função para fechar o modal
+  onModalClose() {
+    this.showModal = false; // Esconde o modal
+  }
 }

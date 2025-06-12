@@ -1,0 +1,104 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .modal {
+            background: #ffffff;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 450px;
+            padding: 35px 30px 45px 30px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            color:#A90713;
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 29px;
+            font-weight: 600;
+            margin: 10px;
+            padding-left: 14%;
+            padding-top: 3%;
+
+        }
+
+        .close-btn {
+            color: #A90713;
+            font-size: 33px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            color: #c53030;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-left: 4px solid #c53030;
+            border-top: 1px solid #d1d5db;
+            border-right: 1px solid #d1d5db;
+            border-bottom: 1px solid #d1d5db;
+            border-radius: 0;
+            font-size: 14px;
+            color: #4a5568;
+            background: white;
+            outline: none;
+            height: 44px;
+        }
+
+        .form-input::placeholder {
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .form-input:focus {
+            border-left-color: #a53030;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #ca101c;
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600px;
+            cursor: pointer;
+            margin-top: 35px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #a1040e;
+        }
