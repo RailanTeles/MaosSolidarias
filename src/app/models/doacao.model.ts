@@ -7,9 +7,8 @@ export class Doacao {
     valorDoado: number;
     idDoador: number;
     idCampanha: number;
-    dataHora: Date;
 
-    constructor(codigoSegurancaCartao: number, dtValidadeCartao: Date, nomeCartao: string, numeroCartao: string ,id: number, valorDoado: number, idDoador: number, idCampanha: number, dataHora: Date){
+    constructor(codigoSegurancaCartao: number, dtValidadeCartao: Date, nomeCartao: string, numeroCartao: string ,id: number, valorDoado: number, idDoador: number, idCampanha: number){
         this.codigoSegurancaCartao = codigoSegurancaCartao;
         this.dtValidadeCartao = dtValidadeCartao;
         this.nomeCartao = nomeCartao;
@@ -18,6 +17,5 @@ export class Doacao {
         this.valorDoado = valorDoado;
         this.idDoador = idDoador;
         this.idCampanha = idCampanha;
-        this.dataHora = dataHora;
     }
 }

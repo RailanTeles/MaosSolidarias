@@ -9,60 +9,66 @@
 
 <div id="divCamp">
   <!-- Caso tenha campanhas -->
-  @if (listacampanhas.length > 0) {
-    @for (campanha of listacampanhas; track campanha.id) {
-    <div class="Camps">
-      <div class="section1">
-        <div class="CampTitulo">{{ campanha.nome }}</div>
-        @if (typeUser == "ADMIN") {
-          <div class="Infos">i</div>
-        }
-      </div>
-      <div class="section2">
-        <p class="CampDesc">
-          {{campanha.descricao}}
-        </p>
-      </div>
-      <div class="section3">
-        <div class="rowDates">
-          <div class="divDt">
-            <p>Início:</p>
-            <div class="dates">
-              <p>{{campanha.dtInicio}}</p>
-            </div>
+  @if (listacampanhas.length > 0) { @for (campanha of listacampanhas; track
+  campanha.id) {
+  <div class="Camps">
+    <div class="section1">
+      <div class="CampTitulo">{{ campanha.nome }}</div>
+      @if (typeUser == "ADMIN") {
+      <div class="Infos">i</div>
+      }
+    </div>
+    <div class="section2">
+      <p class="CampDesc">
+        {{ campanha.descricao }}
+      </p>
+    </div>
+    <div class="section3">
+      <div class="rowDates">
+        <div class="divDt">
+          <p>Início:</p>
+          <div class="dates">
+            <p>{{ campanha.dtInicio }}</p>
           </div>
+        </div>
 
-          <div class="divDt">
-            <p>Fim:</p>
-            <div class="dates">
-              <p>{{campanha.dtFim}}</p>
-            </div>
+        <div class="divDt">
+          <p>Fim:</p>
+          <div class="dates">
+            <p>{{ campanha.dtFim }}</p>
           </div>
         </div>
-        <div class="rowValores">
-          <div class="valorTit">
-            <p>Meta de Arrecadação:</p>
-          </div>
-          <div class="valor">
-            <p>R${{campanha.metaArrecadacao}},00</p>
-          </div>
+      </div>
+      <div class="rowValores">
+        <div class="valorTit">
+          <p>Meta de Arrecadação:</p>
         </div>
-        <div class="rowValores">
-          <div class="valorTit">
-            <p>Valor Atual:</p>
-          </div>
-          <div class="valor">
-            <p>R${{campanha.metaArrecadacao}},00</p>
-          </div>
+        <div class="valor">
+          <p>R${{ campanha.metaArrecadacao }},00</p>
         </div>
-        <div class="divBar">
-          <div class="bar" [style.width]="getBarWidth(campanha)"></div>
+      </div>
+      <div class="rowValores">
+        <div class="valorTit">
+          <p>Valor Atual:</p>
         </div>
+        <div class="valor">
+          <p>
+            R$
+            {{
+              campanha.valorAtual !== undefined
+                ? campanha.valorAtual + ",00"
+                : "calculando..."
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="divBar">
+        <div class="bar" [style.width]="getBarWidth(campanha)"></div>
+      </div>
     </div>
     <button>Fazer Doação</button>
   </div>
-    }
-  } @else {
+  } } @else {
   <!-- Caso não tenha campanhas -->
   <div id="noCamp">
     <div id="replacedCamp">
@@ -76,20 +82,24 @@
 
 <!-- Paginação -->
 @if (listacampanhas.length > 0) {
-  <div class="paginacao">
-    @for (item of [].constructor(tamanhoCampanha); track i; let i = $index) {
-      @if ((i + 1) == paginaSelecionada){
-        <button class="pages selectPage" (click)="atualizarCampanhas(i + 1)">{{ i + 1 }}</button>
-      } @else {
-        <button class="pages" (click)="atualizarCampanhas(i + 1)">{{ i + 1 }}</button>
-      }
-    }
-  </div>
+<div class="paginacao">
+  @for (item of [].constructor(tamanhoCampanha); track i; let i = $index) { @if
+  ((i + 1) == paginaSelecionada){
+  <button class="pages selectPage" (click)="atualizarCampanhas(i + 1)">
+    {{ i + 1 }}
+  </button>
+  } @else {
+  <button class="pages" (click)="atualizarCampanhas(i + 1)">{{ i + 1 }}</button>
+  } }
+</div>
 }
 <!-- Modal -->
 @if (abrirFormCampanha) {
 <div id="modalDiv">
   <div id="modal" (click)="FormCampanha()"></div>
-  <app-form-adicionar (fechar)="FormCampanha()" (atualizar)="atualizarCampanhas(paginaSelecionada)"></app-form-adicionar>
+  <app-form-adicionar
+    (fechar)="FormCampanha()"
+    (atualizar)="atualizarCampanhas(paginaSelecionada)"
+  ></app-form-adicionar>
 </div>
 }

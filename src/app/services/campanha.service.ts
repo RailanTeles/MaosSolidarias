@@ -38,4 +38,12 @@ export class CampanhaService {
       {"headers": this.headers}
     )
   }
+
+  // Pegar campanhas ativas
+  obterCampanhasAtivas(pagina: number): Observable<any>{
+    return this.http.get<any>(
+      `${this.campanhaURL}/ativas?pagina=${pagina}&itensPorPagina=2`, 
+      {"headers": this.headers}
+    )
+  }
 }
