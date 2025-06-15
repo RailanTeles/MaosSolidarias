@@ -10,7 +10,7 @@ export const routes: Routes = [
     {
         path: "",
         component: CampanhasComponent,
-        // canActivate: [autorizadoGuard]
+        canActivate: [autorizadoGuard]
     },
 
     {

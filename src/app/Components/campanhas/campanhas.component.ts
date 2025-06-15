@@ -24,16 +24,26 @@ export class CampanhasComponent {
 
   // Variaveis
   abrirFormCampanha: boolean = false;
+  abrirFormDoacao: boolean = false;
   listacampanhas: Array<Campanha> = [];
   typeUser!: string | null;
+  idUser!: number;
   tamanhoCampanha: number = 0;
   paginaSelecionada: number = 1;
 
   ngOnInit() {
-    this.authService.login('admin@unifan.br', '12345678').subscribe();
-    // localStorage.setItem('tipo', 'normal');
-    this.typeUser = localStorage.getItem('tipo');
-    this.atualizarCampanhas(1);
+    // this.authService.login('admin@unifan.br', '12345678').subscribe();
+    // this.authService.logout();
+    this.authService.getInfos(this.authService.getToken()).subscribe({
+      next: (res) =>{
+        this.typeUser = res.tipo;
+        this.idUser = res.id;
+        this.atualizarCampanhas(1);
+      }, 
+      error: (err) =>{
+        console.log(err);
+      }
+    })
   }
 
   // Métodos

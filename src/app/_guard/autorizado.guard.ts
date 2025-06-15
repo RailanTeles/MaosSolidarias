@@ -3,7 +3,8 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {  of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +14,23 @@ export class autorizadoGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if( this.authService.isLogged == true){
-      return true;
-    } else {
-      this.router.navigate(["/login"]);
-      return false;
+  canActivate(): Observable<boolean> {
+    const token = this.authService.getToken();
+    if (!token) {
+      this.router.navigate(['/login']);
+      return of(false);
     }
+
+    return this.authService.getInfos(token).pipe(
+      map(res => {
+        this.authService.isLogged = true;
+        return true;
+      }),
+      catchError(err => {
+        this.authService.isLogged = false;
+        this.router.navigate(['/login']);
+        return of(false);
+      })
+    );
   }
 }
