@@ -1,1 +1,19 @@
-<p>doadores works!</p>
+<app-navbar></app-navbar>
+<div id="title">
+  <h1>Doadores</h1>
+  @if (typeUser == "ADMIN") {
+  <!-- (click)="FormCampanha()" -->
+  <button id="AdicionarButton" (click)="FormDoador()">+ Adicionar</button>
+  }
+</div>
+
+<!-- Modal Criar Campanha -->
+@if (abrirFormDoador) {
+<div id="modalDiv">
+  <div id="modal" (click)="FormDoador()"></div>
+  <app-form-doador
+    (fechar)="FormDoador()"
+    (atualizar)="atualizarDoadores(paginaSelecionada)"
+  ></app-form-doador>
+</div>
+}

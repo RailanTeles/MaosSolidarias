@@ -45,7 +45,7 @@ export class DoacaoService {
   ): Observable<any> {
     let doacaoJSON = JSON.stringify(doacao);
     return this.http.post<any>(
-      `${this.doacaoURL}/${idCampanha}/${idCampanha}`,
+      `${this.doacaoURL}/${idCampanha}/${idDoador}`,
       doacaoJSON,
       { headers: this.headers }
     );

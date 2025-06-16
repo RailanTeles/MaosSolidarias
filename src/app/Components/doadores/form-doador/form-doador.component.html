@@ -1,0 +1,67 @@
+<div id="TitleCampanha">
+  <h1>Adicionar Usuário</h1>
+  <h1 id="Sair" (click)="fecharModal()">X</h1>
+</div>
+<form
+  (ngSubmit)="SalvarUsuario($event)"
+  [formGroup]="form_dados"
+  id="FormCampanha"
+>
+  <div class="FormRow">
+    <label for="cpf">CPF:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="cpf"
+      placeholder="Digite o cpf do usuario"
+      required
+      formControlName="cpf"
+    />
+  </div>
+  <div class="FormRow">
+    <label for="email">E-mail:</label>
+    <input
+      class="inputs"
+      type="email"
+      id="email"
+      placeholder="Digite o e-mail"
+      required
+      formControlName="email"
+    />
+  </div>
+  <div class="FormRow">
+    <label for="nome">Nome:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="nome"
+      placeholder="Digite o nome"
+      required
+      formControlName="nome"
+    />
+  </div>
+  <div class="FormRow">
+    <label for="telefone">Telefone:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="telefone"
+      placeholder="Digite o telefone"
+      required
+      formControlName="telefone"
+    />
+  </div>
+  <div class="FormRow">
+    <label for="tipo">Tipo de Usuário:</label>
+    <select class="inputs" id="tipo" formControlName="tipo" required>
+      <option value="DOADOR">Doador</option>
+      <option value="ADMIN">Admin</option>
+    </select>
+  </div>
+
+  <button type="submit" id="submit">Salvar Usuário</button>
+
+  @if(mensagem){
+  <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+  }
+</form>

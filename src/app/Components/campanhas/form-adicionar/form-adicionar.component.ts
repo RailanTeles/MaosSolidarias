@@ -19,9 +19,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 export class FormAdicionarComponent {
   // Construtor
   constructor(
-    private authService: AuthService,
     private campanhaService: CampanhaService,
-    private usuarioService: UsuarioService
   ) {}
 
   // Importar o Evento de fechar o modal

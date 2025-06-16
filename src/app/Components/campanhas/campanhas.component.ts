@@ -8,6 +8,7 @@ import { CampanhaService } from '../../services/campanha.service';
 import { DoacaoService } from '../../services/doacao.service';
 import { FormFazerDoacaoComponent } from './form-fazer-doacao/form-fazer-doacao.component';
 import { FormEditCampanhaComponent } from './form-edit-campanha/form-edit-campanha.component';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-campanhas',
