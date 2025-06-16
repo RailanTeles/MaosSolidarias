@@ -1,0 +1,73 @@
+@if(campanha){
+<div id="TitleCampanha">
+  <h1>
+    Doação para: <br />
+    {{ campanha.nome }}
+  </h1>
+  <h1 id="Sair" (click)="fecharModal()">X</h1>
+</div>
+<form
+  [formGroup]="form_dados"
+  (ngSubmit)="EfetuarPagamento($event)"
+  id="FormCampanha"
+>
+  <div class="FormValue">
+    <label for="valorDoado">Valor:</label>
+    <input
+      type="number"
+      id="valorDoado"
+      placeholder="Digite o valor que vai ser doado"
+      required
+      formControlName="valorDoado"
+    />
+  </div>
+  <h1>Informações do Cartão</h1>
+  <div class="Form">
+    <div class="FormComp">
+      <label for="nomeCartao">Nome do Titular:</label>
+      <input
+        class="inputs"
+        type="text"
+        id="nomeCartao"
+        required
+        formControlName="nomeCartao"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="numeroCartao">Número do Cartão:</label>
+      <input
+        class="inputs"
+        type="number"
+        id="numeroCartao"
+        required
+        formControlName="numeroCartao"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="dtValidadeCartao">Data de Validade:</label>
+      <input
+        class="inputs"
+        type="date"
+        id="dtValidadeCartao"
+        required
+        formControlName="dtValidadeCartao"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="codigoSegurancaCartao">Código de Segurança:</label>
+      <input
+        class="inputs"
+        type="number"
+        id="codigoSegurancaCartao"
+        required
+        formControlName="codigoSegurancaCartao"
+      />
+    </div>
+  </div>
+  <button type="submit" id="submit">Efetuar Pagamento</button>
+
+  @if(mensagem){
+  <p [style.color]="corMensagem">{{ mensagem }}</p>
+  }
+</form>
+}

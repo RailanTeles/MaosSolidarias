@@ -6,10 +6,11 @@ import { FormAdicionarComponent } from './form-adicionar/form-adicionar.componen
 import { Campanha } from '../../models/campanha.model';
 import { CampanhaService } from '../../services/campanha.service';
 import { DoacaoService } from '../../services/doacao.service';
+import { FormFazerDoacaoComponent } from './form-fazer-doacao/form-fazer-doacao.component';
 
 @Component({
   selector: 'app-campanhas',
-  imports: [NavbarComponent, FormAdicionarComponent],
+  imports: [NavbarComponent, FormAdicionarComponent, FormFazerDoacaoComponent],
   templateUrl: './campanhas.component.html',
   styleUrl: './campanhas.component.css',
 })
@@ -30,9 +31,10 @@ export class CampanhasComponent {
   idUser!: number;
   tamanhoCampanha: number = 0;
   paginaSelecionada: number = 1;
+  campanhaSelecionada?: Campanha | null = null;
 
   ngOnInit() {
-    // this.authService.login('admin@unifan.br', '12345678').subscribe();
+    this.authService.login('admin@unifan.br', '12345678').subscribe();
     // this.authService.logout();
     this.authService.getInfos(this.authService.getToken()).subscribe({
       next: (res) =>{
@@ -52,6 +54,16 @@ export class CampanhasComponent {
       this.abrirFormCampanha = true;
     } else {
       this.abrirFormCampanha = false;
+    }
+  }
+  
+  FormDoacao(idCampanha?: number){
+    if (this.abrirFormDoacao == false) {
+      this.abrirFormDoacao = true;
+      this.campanhaSelecionada = this.listacampanhas.find(c => c.id == idCampanha);
+    } else {
+      this.abrirFormDoacao = false;
+      this.campanhaSelecionada = null;
     }
   }
 

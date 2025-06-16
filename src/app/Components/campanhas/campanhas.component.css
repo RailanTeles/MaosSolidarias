@@ -70,6 +70,20 @@ app-form-adicionar{
     justify-content: space-evenly;
 }
 
+app-form-fazer-doacao{
+    width: 80%;
+    height: 98%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5%;
+    position: relative;
+    z-index: 12;
+    justify-content: space-evenly;
+}
+
 /* Campanhas */
 #divCamp{
     display: flex;
@@ -334,7 +348,13 @@ app-form-adicionar{
         width: 90%;
         height: 98%;
         background-color: white;
-    }  
+    }
+
+    app-form-fazer-doacao{
+        width: 90%;
+        height: 98%;
+        background-color: white;
+    }
 
     /* Campanha */
     #divCamp{

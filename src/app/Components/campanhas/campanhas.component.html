@@ -9,7 +9,7 @@
 
 <div id="divCamp">
   <!-- Caso tenha campanhas -->
-  @if (listacampanhas.length > 0) { @for (campanha of listacampanhas; track
+  @if (listacampanhas.length > 0 && listacampanhas) { @for (campanha of listacampanhas; track
   campanha.id) {
   <div class="Camps">
     <div class="section1">
@@ -66,7 +66,7 @@
         <div class="bar" [style.width]="getBarWidth(campanha)"></div>
       </div>
     </div>
-    <button>Fazer Doação</button>
+    <button (click)="FormDoacao(campanha.id)">Fazer Doação</button>
   </div>
   } } @else {
   <!-- Caso não tenha campanhas -->
@@ -93,7 +93,8 @@
   } }
 </div>
 }
-<!-- Modal -->
+
+<!-- Modal Criar Campanha -->
 @if (abrirFormCampanha) {
 <div id="modalDiv">
   <div id="modal" (click)="FormCampanha()"></div>
@@ -101,5 +102,18 @@
     (fechar)="FormCampanha()"
     (atualizar)="atualizarCampanhas(paginaSelecionada)"
   ></app-form-adicionar>
+</div>
+}
+
+<!-- Modal Fazer Doação -->
+@if (abrirFormDoacao) {
+<div id="modalDiv">
+  <div id="modal" (click)="FormDoacao()"></div>
+  <app-form-fazer-doacao
+  (fechar)="FormDoacao()"
+  (atualizar)="atualizarCampanhas(paginaSelecionada)"
+  [idUser]="idUser"
+  [campanha]="campanhaSelecionada"
+  ></app-form-fazer-doacao>
 </div>
 }

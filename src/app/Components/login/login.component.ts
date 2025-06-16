@@ -15,8 +15,6 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private campanhaService: CampanhaService,
-    private doacaoService: DoacaoService
   ) {}
   ngOnInit() {
     // this.authService.login('admin@unifan.br', '12345678').subscribe();

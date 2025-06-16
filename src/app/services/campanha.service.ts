@@ -5,22 +5,19 @@ import { Campanha } from '../models/campanha.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CampanhaService {
-
   private campanhaURL = 'http://localhost:5000/api/v1/campanha';
-  private headers = new HttpHeaders({ 
-    'Content-Type': 'application/json', 
-    "Authorization": "tokenJWT" });
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'tokenJWT',
+  });
 
-  constructor(
-    private http: HttpClient,
-    private auth: AuthService
-  ) {
-     this.headers = new HttpHeaders({ 
-      'Content-Type': 'application/json', 
-      "Authorization": `${auth.getToken()}`
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `${auth.getToken()}`,
     });
   }
 
@@ -28,22 +25,24 @@ export class CampanhaService {
   criarCampanha(campanha: Campanha): Observable<any> {
     let campanhaJSON = JSON.stringify(campanha);
 
-    return this.http.post<any>(this.campanhaURL, campanhaJSON, { "headers": this.headers } );
+    return this.http.post<any>(this.campanhaURL, campanhaJSON, {
+      headers: this.headers,
+    });
   }
 
   // Pegar todas as campanhas
-  obterCampanhas(pagina: number): Observable<any>{
+  obterCampanhas(pagina: number): Observable<any> {
     return this.http.get<any>(
-      `${this.campanhaURL}?pagina=${pagina}&itensPorPagina=2`, 
-      {"headers": this.headers}
-    )
+      `${this.campanhaURL}?pagina=${pagina}&itensPorPagina=2`,
+      { headers: this.headers }
+    );
   }
 
   // Pegar campanhas ativas
-  obterCampanhasAtivas(pagina: number): Observable<any>{
+  obterCampanhasAtivas(pagina: number): Observable<any> {
     return this.http.get<any>(
-      `${this.campanhaURL}/ativas?pagina=${pagina}&itensPorPagina=2`, 
-      {"headers": this.headers}
-    )
+      `${this.campanhaURL}/ativas?pagina=${pagina}&itensPorPagina=2`,
+      { headers: this.headers }
+    );
   }
 }
