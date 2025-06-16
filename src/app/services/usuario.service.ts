@@ -41,11 +41,4 @@ export class UsuarioService {
     );
   }
 
-  alterarSenha(senhaAntiga: string, senhaNova: string): Observable<any> {
-    return this.http.put<any>(
-      `${this.baseUrl}/usuario/senha`,
-      { senha: senhaAntiga, novaSenha: senhaNova },
-      { headers: this.headers }
-    );
-  }
 }

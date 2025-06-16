@@ -1,1 +1,51 @@
-<p>perfil works!</p>
+<app-navbar></app-navbar>
+<div id="LogOut" (click)="Deslogar()">
+  <p>Sair</p>
+</div>
+<form
+  [formGroup]="form_dados"
+  (ngSubmit)="SalvarAlteracoes($event)"
+  id="FormCampanha"
+>
+  <h1>Meu perfil</h1>
+
+  <div class="FormComp">
+    <label for="nome">Nome:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="nome"
+      required
+      formControlName="nome"
+    />
+  </div>
+  <div class="FormComp">
+    <label for="email">E-mail:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="email"
+      required
+      formControlName="email"
+    />
+  </div>
+  <div class="FormComp">
+    <label for="telefone">Telefone:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="telefone"
+      required
+      formControlName="telefone"
+    />
+  </div>
+  <div class="buttons">
+    <button type="submit" id="submit">Salvar Alterações</button>
+    <button type="button" id="delete">
+      Mudar Senha
+    </button>
+  </div>
+  @if(mensagem){
+  <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+  }
+</form>

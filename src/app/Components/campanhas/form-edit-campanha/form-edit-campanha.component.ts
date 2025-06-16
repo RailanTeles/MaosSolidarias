@@ -78,7 +78,6 @@ export class FormEditCampanhaComponent {
 
     campanha.dtInicio = formatarData(campanha.dtInicio);
     campanha.dtFim = formatarData(campanha.dtFim);
-    console.log(campanha.dtFim);
 
     if (this.form_dados.valid) {
       if (this.campanha?.id != null) {

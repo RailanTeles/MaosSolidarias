@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,23 @@ export class AuthService {
         Authorization: token,
       },
     });
+  }
+
+  alterarDados(usuario: Usuario): Observable<any> {
+    let usuarioJSON = JSON.stringify(usuario);
+    return this.http.put<any>(
+      `http://localhost:5000/api/v1/usuario/1`,
+      usuarioJSON,
+      { headers: this.headers }
+    );
+  }
+
+  alterarSenha(senhaAntiga: string, senhaNova: string): Observable<any> {
+    return this.http.put<any>(
+      `http://localhost:5000/api/v1/usuario/senha`,
+      { senha: senhaAntiga, novaSenha: senhaNova },
+      { headers: this.headers }
+    );
   }
 
   logout(): void {
