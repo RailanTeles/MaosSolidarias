@@ -44,7 +44,7 @@
           <p>Meta de Arrecadação:</p>
         </div>
         <div class="valor">
-          <p>R${{ campanha.metaArrecadacao }},00</p>
+          <p>R${{ campanha.metaArrecadacao }}</p>
         </div>
       </div>
       <div class="rowValores">
@@ -56,7 +56,7 @@
             R$
             {{
               campanha.valorAtual !== undefined
-                ? campanha.valorAtual + ",00"
+                ? campanha.valorAtual
                 : "calculando..."
             }}
           </p>

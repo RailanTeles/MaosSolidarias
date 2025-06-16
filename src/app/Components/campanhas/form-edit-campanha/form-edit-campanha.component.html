@@ -64,7 +64,9 @@
   </div>
   <div class="buttons">
     <button type="submit" id="submit">Salvar Alterações</button>
-    <button type="button" id="delete" (click)="excluirCampanha()">Deletar Campanha</button>
+    <button type="button" id="delete" (click)="excluirCampanha()">
+      Deletar Campanha
+    </button>
   </div>
 
   @if(mensagem){
@@ -73,6 +75,31 @@
 </form>
 <div id="divisor"></div>
 <div class="Sections">
-    
+  <div class="DivDoacoes">
+    @if (listaDoacoes && listaDoacoes.length > 0) { @for (doacao of
+    listaDoacoes; track doacao.id) {
+    <div class="Doacao">
+      <div class="nomeDoador">{{ doacao.nomeCartao }}</div>
+      <div class="valorDoado">R${{ doacao.valorDoado }}</div>
+    </div>
+    } } @else {
+    <h1>Sem doações para esta campanha</h1>
+    }
+  </div>
+
+  @if (listaDoacoes.length > 0) {
+  <div class="paginacao">
+    @for (item of [].constructor(tamanhoDoacoes); track i; let i = $index) {
+    @if ((i + 1) == paginaSelecionada){
+    <button class="pages selectPage" (click)="obterDoacoes(idCampanha, i + 1)">
+      {{ i + 1 }}
+    </button>
+    } @else {
+    <button class="pages" (click)="obterDoacoes(idCampanha, i + 1)">
+      {{ i + 1 }}
+    </button>
+    } }
+  </div>
+  }
 </div>
 }

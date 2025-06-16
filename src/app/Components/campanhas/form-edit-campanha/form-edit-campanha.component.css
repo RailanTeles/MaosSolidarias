@@ -121,5 +121,71 @@ h1 {
   color: #d80916;
 }
 
+.DivDoacoes{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.Doacao{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  border: #E81E2D 2px solid;
+  border-radius: 30px;
+}
+
+.nomeDoador{
+  background-color: #E81E2D;
+  width: 100%;
+  text-align: center;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  color: white;
+  padding: 3% 0%;
+}
+
+.valorDoado{
+  width: 100%;
+  text-align: center;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 3% 0%;
+  font-weight: bold;
+}
+
+
+.paginacao{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2% 0%;
+    gap: 20px;
+}
+
+.pages{
+    background-color: #E81E2D;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.1s ease;
+    color: white;
+}
+
+.pages:hover{
+    transform: scale(1.2);
+}
+
+.selectPage{
+    background-color: #A90713;
+}
+
 @media screen and (max-width: 780px) {
 }

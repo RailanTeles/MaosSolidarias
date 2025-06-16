@@ -29,10 +29,10 @@ export class DoacaoService {
     );
   }
 
-  // Listar Doações - Armengue
-  obterDoacoesIdUsavel(id: number): Observable<any> {
+  // Listar Doações por Id
+  obterDoacoesIdUsavel(id: number, page: number): Observable<any> {
     return this.http.get<any>(
-      `${this.doacaoURL}/${id}?pagina=1&itensPorPagina=3`,
+      `${this.doacaoURL}/${id}?pagina=${page}&itensPorPagina=3`,
       { headers: this.headers }
     );
   }

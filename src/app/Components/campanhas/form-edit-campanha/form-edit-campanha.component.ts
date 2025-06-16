@@ -9,6 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Doacao } from '../../../models/doacao.model';
 
 @Component({
   selector: 'app-form-edit-campanha',
@@ -37,6 +38,10 @@ export class FormEditCampanhaComponent {
   mensagem: string | null = null;
   corMensagem: 'red' | 'green' | null = null;
   form_dados!: FormGroup;
+  listaDoacoes: Array<Doacao> = [];
+  tamanhoDoacoes: number = 0;
+  paginaSelecionada: number = 1;
+  idCampanha!: number;
 
   ngOnChanges() {
     if (this.campanha) {
@@ -53,6 +58,10 @@ export class FormEditCampanhaComponent {
         dtInicio: new FormControl(this.campanha.dtInicio, Validators.required),
         dtFim: new FormControl(this.campanha.dtFim, Validators.required),
       });
+      if (this.campanha?.id !== undefined) {
+        this.obterDoacoes(this.campanha.id, 1);
+        this.idCampanha = this.campanha?.id;
+      }
     }
   }
 
@@ -123,5 +132,18 @@ export class FormEditCampanhaComponent {
     } else {
       this.mensagem = 'Sem id!';
     }
+  }
+
+  obterDoacoes(idCampanha: number, page: number) {
+    this.doacaoService.obterDoacoesIdUsavel(idCampanha, page).subscribe({
+      next: (res) => {
+        this.listaDoacoes = res.doacoes;
+        this.tamanhoDoacoes = res.qtdPaginas;
+        this.paginaSelecionada = page;
+      },
+      error: (err) => {
+        console.error('Erro na API:', err);
+      },
+    });
   }
 }
