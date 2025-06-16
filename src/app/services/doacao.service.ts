@@ -29,6 +29,14 @@ export class DoacaoService {
     );
   }
 
+  // Listar Doações - Armengue
+  obterDoacoesIdUsavel(id: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.doacaoURL}/${id}?pagina=1&itensPorPagina=3`,
+      { headers: this.headers }
+    );
+  }
+
   // Fazer Doação
   fazerDoacao(
     doacao: Doacao,

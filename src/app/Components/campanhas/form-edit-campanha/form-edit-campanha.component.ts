@@ -19,7 +19,6 @@ import {
 export class FormEditCampanhaComponent {
   // Construtor
   constructor(
-    private authService: AuthService,
     private campanhaService: CampanhaService,
     private doacaoService: DoacaoService
   ) {}
