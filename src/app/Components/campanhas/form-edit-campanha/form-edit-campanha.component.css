@@ -1,0 +1,125 @@
+.Sections {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#divisor {
+  height: 100%;
+  border: 2px solid #a90713;
+}
+
+h1 {
+  font-size: 30px;
+  color: #a90713;
+  font-family: "Outfit SemiBold";
+  text-align: center;
+}
+
+#Sair {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 2%;
+  font-size: 50px;
+  cursor: pointer;
+  z-index: 40;
+}
+
+.Form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  padding: 0% 1%;
+  color: #a90713;
+  font-size: 15px;
+}
+
+.FormComp {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  margin: 2% 0%;
+}
+
+.inputs {
+  width: 100%;
+  padding: 5% 0%;
+  border: 2px solid gray;
+  border-left: 5px solid #a90713;
+  padding-left: 1%;
+}
+
+#descricao {
+  padding: 1% 0%;
+  padding-left: 1%;
+  height: 100px;
+}
+
+#DivDescricao {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  margin: 2% 0%;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#submit {
+  background-color: #a90713;
+  padding: 1% 2%;
+  color: white;
+  font-size: 25px;
+  border: none;
+  border-radius: 15px;
+  font-family: "Outfit SemiBold";
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  min-height: 50px;
+  min-width: 230px;
+}
+
+#submit:hover {
+  background-color: #e81e2d;
+  transform: scale(1.1);
+  color: #5e151b;
+}
+
+#delete {
+  background-color: #330205;
+  padding: 1% 2%;
+  color: white;
+  font-size: 25px;
+  border: none;
+  border-radius: 15px;
+  font-family: "Outfit SemiBold";
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  min-height: 50px;
+  min-width: 230px;
+}
+
+#delete:hover {
+  background-color: #5e151b;
+  transform: scale(1.1);
+  color: #d80916;
+}
+
+@media screen and (max-width: 780px) {
+}

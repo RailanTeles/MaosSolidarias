@@ -45,4 +45,12 @@ export class CampanhaService {
       { headers: this.headers }
     );
   }
+
+  // Atualizar a campanha
+  atualizarCampanha(id: number, campanha: Campanha): Observable<any> {
+    let campanhaJSON = JSON.stringify(campanha);
+    return this.http.put<any>(`${this.campanhaURL}/${id}`, campanhaJSON, {
+      headers: this.headers,
+    });
+  }
 }

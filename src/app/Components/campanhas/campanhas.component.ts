@@ -7,10 +7,16 @@ import { Campanha } from '../../models/campanha.model';
 import { CampanhaService } from '../../services/campanha.service';
 import { DoacaoService } from '../../services/doacao.service';
 import { FormFazerDoacaoComponent } from './form-fazer-doacao/form-fazer-doacao.component';
+import { FormEditCampanhaComponent } from './form-edit-campanha/form-edit-campanha.component';
 
 @Component({
   selector: 'app-campanhas',
-  imports: [NavbarComponent, FormAdicionarComponent, FormFazerDoacaoComponent],
+  imports: [
+    NavbarComponent,
+    FormAdicionarComponent,
+    FormFazerDoacaoComponent,
+    FormEditCampanhaComponent,
+  ],
   templateUrl: './campanhas.component.html',
   styleUrl: './campanhas.component.css',
 })
@@ -26,6 +32,7 @@ export class CampanhasComponent {
   // Variaveis
   abrirFormCampanha: boolean = false;
   abrirFormDoacao: boolean = false;
+  abrirFormEdit: boolean = false;
   listacampanhas: Array<Campanha> = [];
   typeUser!: string | null;
   idUser!: number;
@@ -35,15 +42,15 @@ export class CampanhasComponent {
 
   ngOnInit() {
     this.authService.getInfos(this.authService.getToken()).subscribe({
-      next: (res) =>{
+      next: (res) => {
         this.typeUser = res.tipo;
         this.idUser = res.id;
         this.atualizarCampanhas(1);
-      }, 
-      error: (err) =>{
+      },
+      error: (err) => {
         console.log(err);
-      }
-    })
+      },
+    });
   }
 
   // Métodos
@@ -54,13 +61,27 @@ export class CampanhasComponent {
       this.abrirFormCampanha = false;
     }
   }
-  
-  FormDoacao(idCampanha?: number){
+
+  FormDoacao(idCampanha?: number) {
     if (this.abrirFormDoacao == false) {
       this.abrirFormDoacao = true;
-      this.campanhaSelecionada = this.listacampanhas.find(c => c.id == idCampanha);
+      this.campanhaSelecionada = this.listacampanhas.find(
+        (c) => c.id == idCampanha
+      );
     } else {
       this.abrirFormDoacao = false;
+      this.campanhaSelecionada = null;
+    }
+  }
+
+  FormEditar(idCampanha?: number) {
+    if (this.abrirFormEdit == false) {
+      this.abrirFormEdit = true;
+      this.campanhaSelecionada = this.listacampanhas.find(
+        (c) => c.id == idCampanha
+      );
+    } else {
+      this.abrirFormEdit = false;
       this.campanhaSelecionada = null;
     }
   }
@@ -155,13 +176,13 @@ export class CampanhasComponent {
 
   // Largura da barra
   getBarWidth(campanha: Campanha): string {
-  if (!campanha || !campanha.metaArrecadacao || !campanha.valorAtual) {
-    return '0%';
+    if (!campanha || !campanha.metaArrecadacao || !campanha.valorAtual) {
+      return '0%';
+    }
+
+    const percent = (campanha.valorAtual / campanha.metaArrecadacao) * 100;
+
+    // Limita a 100% para não estourar a barra
+    return `${Math.min(percent, 100)}%`;
   }
-
-  const percent = (campanha.valorAtual / campanha.metaArrecadacao) * 100;
-
-  // Limita a 100% para não estourar a barra
-  return `${Math.min(percent, 100)}%`;
-}
 }

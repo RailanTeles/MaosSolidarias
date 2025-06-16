@@ -1,0 +1,76 @@
+@if(campanha){
+<h1 id="Sair" (click)="fecharModal()">X</h1>
+<form
+  [formGroup]="form_dados"
+  (ngSubmit)="SalvarAlteracoes($event)"
+  id="FormCampanha"
+  class="Sections"
+>
+  <h1>
+    Informações de: <br />
+    {{ campanha.nome }}
+  </h1>
+  <div class="Form">
+    <div class="FormComp">
+      <label for="nome">Nome:</label>
+      <input
+        class="inputs"
+        type="text"
+        id="nome"
+        required
+        formControlName="nome"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="metaArrecadacao">Meta:</label>
+      <input
+        class="inputs"
+        type="number"
+        id="metaArrecadacao"
+        required
+        formControlName="metaArrecadacao"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="dtInicio">Data de Início:</label>
+      <input
+        class="inputs"
+        type="date"
+        id="dtInicio"
+        required
+        formControlName="dtInicio"
+      />
+    </div>
+    <div class="FormComp">
+      <label for="dtFim">Data de Término:</label>
+      <input
+        class="inputs"
+        type="date"
+        id="dtFim"
+        required
+        formControlName="dtFim"
+      />
+    </div>
+    <div id="DivDescricao">
+      <label for="descricao">Descrição:</label>
+      <textarea
+        class="inputs"
+        type="text"
+        id="descricao"
+        required
+        formControlName="descricao"
+      ></textarea>
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="submit" id="submit">Salvar Alterações</button>
+    <button type="button" id="delete">Deletar Campanha</button>
+  </div>
+
+  @if(mensagem){
+  <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+  }
+</form>
+<div id="divisor"></div>
+<div class="Sections"></div>
+}
