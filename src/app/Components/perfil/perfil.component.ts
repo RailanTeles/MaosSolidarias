@@ -9,10 +9,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 
 @Component({
   selector: 'app-perfil',
-  imports: [NavbarComponent, ReactiveFormsModule],
+  imports: [NavbarComponent, ReactiveFormsModule, AlterarSenhaComponent],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.css',
 })
@@ -52,20 +53,37 @@ export class PerfilComponent {
     window.location.reload();
   }
 
+  FormSenha(){
+    if(this.abrirFormSenha == false){
+      this.abrirFormSenha = true;
+    } else {
+      this.abrirFormSenha = false;
+    }
+  }
+
   SalvarAlteracoes(e: SubmitEvent) {
     e.preventDefault();
     let usuario = Object.assign(this.form_dados.value);
-    this.authService.alterarDados(usuario).subscribe({
-      next: (res) => {
-        this.corMensagem = 'green';
-        this.mensagem = res.msg || 'Informações editadas com sucesso!';
-        this.form_dados.reset();
-      },
-      error: (err) => {
-        this.corMensagem = 'red';
-        this.mensagem = err.error?.msg || 'Erro ao editar as informações.';
-        console.error('Erro na API:', err);
-      },
-    });
+    if (this.form_dados.valid) {
+      this.authService.alterarDados(usuario).subscribe({
+        next: (res) => {
+          this.corMensagem = 'green';
+          this.mensagem = res.msg || 'Informações editadas com sucesso!';
+          window.location.reload();
+        },
+        error: (err) => {
+          this.corMensagem = 'red';
+          this.mensagem = err.error?.msg || 'Erro ao editar as informações.';
+          console.error('Erro na API:', err);
+        },
+      });
+    } else {
+      this.corMensagem = 'red';
+      this.mensagem = 'Erro! Os seguintes campos não foram preenchdidos: <br>';
+      const controls = this.form_dados.controls;
+      if (controls['nome'].errors) this.mensagem += 'Nome,';
+      if (controls['email'].errors) this.mensagem += ' Email, ';
+      if (controls['telefone'].errors) this.mensagem += 'Telefone';
+    }
   }
 }

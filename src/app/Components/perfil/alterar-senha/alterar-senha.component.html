@@ -1,0 +1,19 @@
+<div id="TitleCampanha">
+    <h1>Alterar Senha</h1>
+    <h1 id="Sair" (click)="fecharModal()">X</h1>
+</div>
+<form (ngSubmit)="AlterarSenha($event)" [formGroup]="form_dados" id="FormSenha">
+    <div class="FormRow">
+        <label for="senhaAntiga">Senha Antiga:</label>
+        <input class="inputs" type="password" id="senhaAntiga" placeholder="Digite a senha atual" required formControlName="senhaAntiga">
+    </div>
+    <div class="FormRow">
+        <label for="senhaNova">Senha Nova:</label>
+        <input class="inputs" type="password" id="senhaNova" placeholder="Digite a senha nova" required formControlName="senhaNova">
+    </div>
+    <button type="submit" id="submit">Alterar a senha</button>
+
+@if(mensagem){
+  <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+  }
+</form>

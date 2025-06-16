@@ -41,11 +41,19 @@
   </div>
   <div class="buttons">
     <button type="submit" id="submit">Salvar Alterações</button>
-    <button type="button" id="delete">
-      Mudar Senha
-    </button>
+    <button type="button" id="delete" (click)="FormSenha()">Mudar Senha</button>
   </div>
   @if(mensagem){
   <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
   }
 </form>
+
+<!-- Modal Mudar Senha -->
+@if (abrirFormSenha) {
+<div id="modalDiv">
+  <div id="modal" (click)="FormSenha()"></div>
+  <app-alterar-senha
+  (fechar)="FormSenha()"
+  > </app-alterar-senha>
+</div>
+}

@@ -13,7 +13,12 @@ export class AuthService {
     Authorization: 'tokenJWT',
   });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `${this.getToken()}`,
+    });
+  }
 
   login(email: string, senha: string | null | undefined): Observable<any> {
     return this.http
@@ -58,7 +63,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('tipo');
   }
 
   getToken(): string {

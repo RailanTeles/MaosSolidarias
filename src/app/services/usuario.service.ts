@@ -13,7 +13,7 @@ export class UsuarioService {
 
   constructor(
     private http: HttpClient,
-    private injector: Injector    // ← pega AuthService só na hora que precisar
+    private injector: Injector   
   ) {}
 
   private get headers(): HttpHeaders {
