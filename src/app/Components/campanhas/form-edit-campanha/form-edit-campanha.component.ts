@@ -65,20 +65,20 @@ export class FormEditCampanhaComponent {
 
     const formatarData = (data: string | null) => {
       if (!data) return '';
-      const d = new Date(data);
-      const dia = String(d.getDate()).padStart(2, '0');
-      const mes = String(d.getMonth() + 1).padStart(2, '0');
-      const ano = d.getFullYear();
+      const [ano, mes, dia] = data.split('-'); 
       return `${dia}/${mes}/${ano}`;
     };
 
     campanha.dtInicio = formatarData(campanha.dtInicio);
     campanha.dtFim = formatarData(campanha.dtFim);
+    console.log(campanha.dtFim);
 
     if (this.form_dados.valid) {
       if (this.campanha?.id != null) {
-        this.campanhaService.atualizarCampanha(this.campanha.id, campanha).subscribe({
-          next: (res) => {
+        this.campanhaService
+          .atualizarCampanha(this.campanha.id, campanha)
+          .subscribe({
+            next: (res) => {
               this.corMensagem = 'green';
               this.mensagem = res.msg || 'Doação feita com sucesso!';
               this.form_dados.reset();
@@ -88,7 +88,7 @@ export class FormEditCampanhaComponent {
               this.mensagem = err.error?.msg || 'Erro ao fazer a doação.';
               console.error('Erro na API:', err);
             },
-        })
+          });
       } else {
         this.mensagem = 'Sem id!';
       }
