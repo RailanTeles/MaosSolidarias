@@ -34,8 +34,6 @@ export class CampanhasComponent {
   campanhaSelecionada?: Campanha | null = null;
 
   ngOnInit() {
-    this.authService.login('admin@unifan.br', '12345678').subscribe();
-    // this.authService.logout();
     this.authService.getInfos(this.authService.getToken()).subscribe({
       next: (res) =>{
         this.typeUser = res.tipo;

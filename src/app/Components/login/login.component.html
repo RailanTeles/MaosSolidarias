@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div id="background">
+  <div id="area">
+    <div id="loginArea">
+      <img src="logoBig.png" alt="" id="logo" />
+      <form
+        action=""
+        id="FormLogin"
+        [formGroup]="form_dados"
+        (ngSubmit)="Logar($event)"
+      >
+        <input
+          class="inputs"
+          type="email"
+          id="e-mail"
+          placeholder="Email:"
+          required
+          formControlName="email"
+        />
+        <input
+          class="inputs"
+          type="password"
+          id="senha"
+          placeholder="Senha:"
+          required
+          formControlName="senha"
+        />
+        <button type="submit" id="submit">Entrar</button>
+
+        @if(mensagem){
+        <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+        }
+      </form>
+      <a [routerLink]="['/registrar']" id="linkRegister"
+        >Não tem uma conta ainda? <br />Clique aqui</a
+      >
+    </div>
+    <img src="loginImage.png" alt="" id="LoginImage" />
+  </div>
+</div>
