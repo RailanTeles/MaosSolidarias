@@ -29,7 +29,7 @@
 }
 
 #loginArea > img {
-  width: 15%;
+  width: 20%;
 }
 
 #FormLogin {
@@ -37,7 +37,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   width: 100%;
 }
 

@@ -22,10 +22,6 @@ export class LoginComponent {
   mensagem: string | null = null;
   corMensagem: 'red' | 'green' | null = null;
 
-  ngOnInit() {
-    // this.authService.login('admin@unifan.br', '12345678').subscribe();
-  }
-
   // Formulário
   form_dados = new FormGroup({
     email: new FormControl('', Validators.required),
