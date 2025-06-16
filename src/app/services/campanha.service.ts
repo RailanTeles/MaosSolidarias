@@ -53,4 +53,11 @@ export class CampanhaService {
       headers: this.headers,
     });
   }
+
+  // Excluir Campanha
+  removerCampanha(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.campanhaURL}/${id}`, {
+      headers: this.headers,
+    });
+  }
 }

@@ -60,12 +60,11 @@ export class FormEditCampanhaComponent {
   SalvarAlteracoes(e: SubmitEvent) {
     e.preventDefault();
     this.mensagem = null;
-    this.mensagem = null;
     let campanha = Object.assign(this.form_dados.value);
 
     const formatarData = (data: string | null) => {
       if (!data) return '';
-      const [ano, mes, dia] = data.split('-'); 
+      const [ano, mes, dia] = data.split('-');
       return `${dia}/${mes}/${ano}`;
     };
 
@@ -80,12 +79,12 @@ export class FormEditCampanhaComponent {
           .subscribe({
             next: (res) => {
               this.corMensagem = 'green';
-              this.mensagem = res.msg || 'Doação feita com sucesso!';
+              this.mensagem = res.msg || 'Campanha editada com sucesso!';
               this.form_dados.reset();
             },
             error: (err) => {
               this.corMensagem = 'red';
-              this.mensagem = err.error?.msg || 'Erro ao fazer a doação.';
+              this.mensagem = err.error?.msg || 'Erro ao editar a campanha.';
               console.error('Erro na API:', err);
             },
           });
@@ -102,6 +101,28 @@ export class FormEditCampanhaComponent {
         this.mensagem += 'Meta de Arrecadação,';
       if (controls['dtInicio'].errors) this.mensagem += 'Data de Início,';
       if (controls['dtFim'].errors) this.mensagem += 'Data de Término';
+    }
+  }
+
+  excluirCampanha() {
+    this.mensagem = null;
+    if (this.form_dados.valid) {
+      if (this.campanha?.id != null) {
+        this.campanhaService.removerCampanha(this.campanha.id).subscribe({
+          next: (res) => {
+            this.corMensagem = 'green';
+            this.mensagem = 'Campanha excluida com sucesso';
+            this.form_dados.reset();
+          },
+          error: (err) => {
+            this.corMensagem = 'red';
+            this.mensagem = err.error?.msg || 'Erro ao excluir a campanha.';
+            console.error('Erro na API:', err);
+          },
+        });
+      }
+    } else {
+      this.mensagem = 'Sem id!';
     }
   }
 }
