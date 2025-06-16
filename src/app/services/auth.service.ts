@@ -42,7 +42,7 @@ export class AuthService {
   alterarDados(usuario: Usuario): Observable<any> {
     let usuarioJSON = JSON.stringify(usuario);
     return this.http.put<any>(
-      `http://localhost:5000/api/v1/usuario/1`,
+      `http://localhost:5000/api/v1/usuario`,
       usuarioJSON,
       { headers: this.headers }
     );
