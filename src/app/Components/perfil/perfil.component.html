@@ -2,7 +2,8 @@
 <div id="LogOut" (click)="Deslogar()">
   <p>Sair</p>
 </div>
-<form
+@if (form_dados) {
+  <form
   [formGroup]="form_dados"
   (ngSubmit)="SalvarAlteracoes($event)"
   id="FormCampanha"
@@ -47,6 +48,7 @@
   <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
   }
 </form>
+}
 
 <!-- Modal Mudar Senha -->
 @if (abrirFormSenha) {

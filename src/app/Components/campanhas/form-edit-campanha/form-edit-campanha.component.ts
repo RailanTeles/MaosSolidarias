@@ -65,6 +65,7 @@ export class FormEditCampanhaComponent {
     }
   }
 
+  // Salvar Alterações
   SalvarAlteracoes(e: SubmitEvent) {
     e.preventDefault();
     this.mensagem = null;

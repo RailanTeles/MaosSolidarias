@@ -50,6 +50,7 @@ export class FormFazerDoacaoComponent {
     codigoSegurancaCartao: new FormControl('', Validators.required),
   });
 
+  // Fazer Pagamento
   EfetuarPagamento(e: SubmitEvent) {
     e.preventDefault();
     this.mensagem = null;
