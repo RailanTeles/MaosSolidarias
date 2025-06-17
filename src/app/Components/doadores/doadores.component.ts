@@ -5,6 +5,9 @@ import { CampanhaService } from '../../services/campanha.service';
 import { DoacaoService } from '../../services/doacao.service';
 import { Usuario } from '../../models/usuario.model';
 import { FormDoadorComponent } from './form-doador/form-doador.component';
+import { UsuarioService } from '../../services/usuario.service';
+import { Route } from '@angular/router';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-doadores',
@@ -16,8 +19,7 @@ export class DoadoresComponent {
   // Construtor
   constructor(
     private authService: AuthService,
-    private campanhaService: CampanhaService,
-    private doacaoService: DoacaoService
+    private usuarioService: UsuarioService
   ) {}
 
   // Variaveis
@@ -62,46 +64,47 @@ export class DoadoresComponent {
   }
 
   atualizarDoadores(pagina: number) {
-    // this.campanhaService.obterCampanhas(pagina).subscribe({
-    //   next: (res) => {
-    //     if (res.campanhas) {
-    //       res.campanhas.forEach((campanha: any) => {
-    //         campanha.dtInicio = campanha.dtInicio.substring(0, 10);
-    //         campanha.dtFim = campanha.dtFim.substring(0, 10);
-    //       });
-    //     }
+      // this.usuarioService.
+  //   this.campanhaService.obterCampanhas(pagina).subscribe({
+  //     next: (res) => {
+  //       if (res.campanhas) {
+  //         res.campanhas.forEach((campanha: any) => {
+  //           campanha.dtInicio = campanha.dtInicio.substring(0, 10);
+  //           campanha.dtFim = campanha.dtFim.substring(0, 10);
+  //         });
+  //       }
 
-    //     this.listacampanhas = res.campanhas;
-    //     // Pegar as doações
-    //     res.campanhas.forEach((campanha: any) => {
-    //       this.doacaoService.obterDoacoesId(campanha.id).subscribe({
-    //         next: (res) => {
-    //           let valorTotalDoado = 0;
-    //           if (res.doacoes) {
-    //             res.doacoes.forEach((doacao: any) => {
-    //               valorTotalDoado += doacao.valorDoado;
-    //             });
-    //           }
-    //           const campanhaNaLista = this.listacampanhas.find(
-    //             (c: Campanha) => c.id === campanha.id
-    //           );
+  //       this.listacampanhas = res.campanhas;
+  //       // Pegar as doações
+  //       res.campanhas.forEach((campanha: any) => {
+  //         this.doacaoService.obterDoacoesId(campanha.id).subscribe({
+  //           next: (res) => {
+  //             let valorTotalDoado = 0;
+  //             if (res.doacoes) {
+  //               res.doacoes.forEach((doacao: any) => {
+  //                 valorTotalDoado += doacao.valorDoado;
+  //               });
+  //             }
+  //             const campanhaNaLista = this.listacampanhas.find(
+  //               (c: Campanha) => c.id === campanha.id
+  //             );
 
-    //           if (campanhaNaLista) {
-    //             campanhaNaLista.valorAtual = valorTotalDoado || 0;
-    //           }
-    //         },
-    //         error: (err) => {
-    //           console.log(err);
-    //         },
-    //       });
-    //     });
+  //             if (campanhaNaLista) {
+  //               campanhaNaLista.valorAtual = valorTotalDoado || 0;
+  //             }
+  //           },
+  //           error: (err) => {
+  //             console.log(err);
+  //           },
+  //         });
+  //       });
 
-    //     this.tamanhoCampanha = res.qtdPaginas;
-    //     this.paginaSelecionada = pagina;
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   },
-    // });
+  //       this.tamanhoCampanha = res.qtdPaginas;
+  //       this.paginaSelecionada = pagina;
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
   }
 }

@@ -45,6 +45,10 @@ export class AuthService {
   }
 
   alterarDados(usuario: Usuario): Observable<any> {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `${this.getToken()}`,
+    });
     let usuarioJSON = JSON.stringify(usuario);
     return this.http.put<any>(
       `http://localhost:5000/api/v1/usuario`,
@@ -54,6 +58,11 @@ export class AuthService {
   }
 
   alterarSenha(senhaAntiga: string, senhaNova: string): Observable<any> {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `${this.getToken()}`,
+    });
+    console.log(this.headers)
     return this.http.put<any>(
       `http://localhost:5000/api/v1/usuario/senha`,
       { senha: senhaAntiga, novaSenha: senhaNova },
