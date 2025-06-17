@@ -34,6 +34,10 @@ export class PerfilComponent {
       next: (res) => {
         this.user = res;
         this.idUser = res.id;
+      
+        if(res.primeiroAcesso == 1){
+          alert("Para conectar normalmente, altere sua senha");
+        }
 
         this.form_dados = new FormGroup({
           nome: new FormControl(this.user.nome, Validators.required),
