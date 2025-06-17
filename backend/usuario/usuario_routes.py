@@ -23,6 +23,22 @@ def obterUsuarioPorToken():
     except Exception as error:
         return str(error), 500
 
+@usuarioRoutes.route("/api/v1/usuario")
+def obterUsuarios():
+    try:
+        if "Authorization" in request.headers:
+            pagina = request.args.get('pagina', default=1, type=int)
+            itensPorPagina = request.args.get('itensPorPagina', default=2, type=int)
+            offset = (pagina - 1) * itensPorPagina
+            if pagina == None or itensPorPagina == None or offset == None:
+                return {"msg":"É preciso passar os parâmetros pagina e itensPorPagina como queryparams"}, 422
+            usuarioBC = UsuarioBC()
+            return usuarioBC.obterUsuarios(request.headers["Authorization"], pagina, itensPorPagina, offset)
+        else:
+            return {"msg":"Sem permissão"}, 401
+    except Exception as error:
+        return str(error), 500
+
 @usuarioRoutes.route("/api/v1/doador")
 def obterDoadores():
     try:

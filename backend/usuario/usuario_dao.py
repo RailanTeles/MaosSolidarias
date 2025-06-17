@@ -2,6 +2,14 @@ from persistencia.base_dao import BaseDAO
 
 class UsuarioDAO(BaseDAO):
 
+    def obterQtdUsuarios(self):
+        qtdUsuarios = self.obterRegistro("select count(*) from usuarios")
+        return qtdUsuarios[0]
+
+    def obterUsuarios(self, itensPorPagina, offset):
+        parametros = [itensPorPagina, offset]
+        return self.obterRegistrosPorParametros("select id, cpf, nome, email, telefone, primeiro_acesso, tipo from usuarios LIMIT ? OFFSET ?", parametros)
+
     def obterQtdDoadores(self):
         qtdDoadores = self.obterRegistro("select count(*) from usuarios where tipo='DOADOR'")
         return qtdDoadores[0]

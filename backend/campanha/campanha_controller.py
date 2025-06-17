@@ -44,9 +44,25 @@ class CampanhaBC:
         }), 200
 
     @loginRequired
+    def obterCampanhasComTotalArrecadado(self, usuarioLogado, pagina, itensPorPagina, offset):
+        if usuarioLogado.tipo != TipoUsuario.ADMIN.name:
+            return {"msg":"Apenas um administrador pode listar campanhas"}, 422
+        if usuarioLogado.primeiroAcesso:
+            return {"msg":"É preciso alterar a senha antes de fazer qualquer operação"}, 422
+        qtdCampanhas = self.campanhaDAO.obterQtdCampanhas()
+        campanhas = [{'id':tuplaCampanha[0], 'nome': tuplaCampanha[1], 'descricao': tuplaCampanha[2], 'dtInicio': tuplaCampanha[3], 'dtFim': tuplaCampanha[4], 'metaArrecadacao': tuplaCampanha[5], 'valorArrecadado': 0 if tuplaCampanha[6]==None else tuplaCampanha[6]} for tuplaCampanha in self.campanhaDAO.obterCampanhasComArrecadacao(itensPorPagina, offset)]
+        return jsonify({
+            'campanhas': campanhas,
+            'total': qtdCampanhas,
+            'pagina': pagina,
+            'itensPorPagina': itensPorPagina,
+            'qtdPaginas': qtdCampanhas // itensPorPagina + (1 if qtdCampanhas % itensPorPagina > 0 else 0)
+        }), 200
+
+    @loginRequired
     def obterCampanhas(self, usuarioLogado, pagina, itensPorPagina, offset):
         if usuarioLogado.tipo != TipoUsuario.ADMIN.name:
-            return {"msg":"Apenas um administrador pode listar doadores"}, 422
+            return {"msg":"Apenas um administrador pode listar campanhas"}, 422
         if usuarioLogado.primeiroAcesso:
             return {"msg":"É preciso alterar a senha antes de fazer qualquer operação"}, 422
         qtdCampanhas = self.campanhaDAO.obterQtdCampanhas()

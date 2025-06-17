@@ -3,16 +3,16 @@ export class Campanha {
     nome: string;
     descricao: string;
     metaArrecadacao: number;
-    valorAtual?: number | null;
+    valorArrecadado: number;
     dtInicio: Date;
     dtFim: Date;
 
 
-    constructor( nome: string, descricao: string, metaArrecadacao: number, valorAtual: number | null, dtInicio: Date, dtFim: Date){
+    constructor( nome: string, descricao: string, metaArrecadacao: number, valorArrecadado: number, dtInicio: Date, dtFim: Date){
         this.nome = nome;
         this.descricao = descricao;
         this.metaArrecadacao = metaArrecadacao;
-        this.valorAtual = valorAtual;
+        this.valorArrecadado = valorArrecadado;
         this.dtInicio = dtInicio;
         this.dtFim = dtFim;
     }

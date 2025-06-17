@@ -20,6 +20,22 @@ def obterCampanhasAtivas():
     except Exception as error:
         return str(error), 500
 
+@campanhaRoutes.route("/api/v1/campanha/arrecadado")
+def obterCampanhasComTotalArrecadado():
+    try:
+        if "Authorization" in request.headers:
+            pagina = request.args.get('pagina', default=1, type=int)
+            itensPorPagina = request.args.get('itensPorPagina', default=2, type=int)
+            offset = (pagina - 1) * itensPorPagina
+            if pagina == None or itensPorPagina == None or offset == None:
+                return {"msg":"É preciso passar os parâmetros pagina e itensPorPagina como queryparams"}, 422
+            campanhaBC = CampanhaBC()
+            return campanhaBC.obterCampanhasComTotalArrecadado(request.headers["Authorization"], pagina, itensPorPagina, offset)
+        else:
+            return {"msg":"Sem permissão"}, 401
+    except Exception as error:
+        return str(error), 500
+
 @campanhaRoutes.route("/api/v1/campanha")
 def obterCampanhas():
     try:

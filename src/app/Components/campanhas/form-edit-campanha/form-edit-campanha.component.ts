@@ -88,7 +88,6 @@ export class FormEditCampanhaComponent {
             next: (res) => {
               this.corMensagem = 'green';
               this.mensagem = res.msg || 'Campanha editada com sucesso!';
-              this.form_dados.reset();
             },
             error: (err) => {
               this.corMensagem = 'red';

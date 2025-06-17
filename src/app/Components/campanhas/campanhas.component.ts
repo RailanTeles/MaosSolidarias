@@ -102,30 +102,7 @@ export class CampanhasComponent {
           }
 
           this.listacampanhas = res.campanhas;
-          // Pegar as doações
-          res.campanhas.forEach((campanha: any) => {
-            this.doacaoService.obterDoacoesId(campanha.id).subscribe({
-              next: (res) => {
-                let valorTotalDoado = 0;
-                if (res.doacoes) {
-                  res.doacoes.forEach((doacao: any) => {
-                    valorTotalDoado += doacao.valorDoado;
-                  });
-                }
-                const campanhaNaLista = this.listacampanhas.find(
-                  (c: Campanha) => c.id === campanha.id
-                );
-
-                if (campanhaNaLista) {
-                  campanhaNaLista.valorAtual = parseFloat((valorTotalDoado || 0).toFixed(2));
-                }
-              },
-              error: (err) => {
-                console.log(err);
-              },
-            });
-          });
-
+          console.log(res.campanhas);
           this.tamanhoCampanha = res.qtdPaginas;
           this.paginaSelecionada = pagina;
         },
@@ -144,29 +121,6 @@ export class CampanhasComponent {
           }
 
           this.listacampanhas = res.campanhasAtivas;
-          // Pegar as doações
-          res.campanhasAtivas.forEach((campanha: any) => {
-            this.doacaoService.obterDoacoesId(campanha.id).subscribe({
-              next: (res) => {
-                let valorTotalDoado = 0;
-                if (res.doacoes) {
-                  res.doacoes.forEach((doacao: any) => {
-                    valorTotalDoado += doacao.valorDoado;
-                  });
-                }
-                const campanhaNaLista = this.listacampanhas.find(
-                  (c: Campanha) => c.id === campanha.id
-                );
-
-                if (campanhaNaLista) {
-                  campanhaNaLista.valorAtual = valorTotalDoado || 0;
-                }
-              },
-              error: (err) => {
-                console.log(err);
-              },
-            });
-          });
           this.tamanhoCampanha = res.qtdPaginas;
           this.paginaSelecionada = pagina;
         },
@@ -179,11 +133,11 @@ export class CampanhasComponent {
 
   // Largura da barra
   getBarWidth(campanha: Campanha): string {
-    if (!campanha || !campanha.metaArrecadacao || !campanha.valorAtual) {
+    if (!campanha || !campanha.metaArrecadacao || !campanha.valorArrecadado) {
       return '0%';
     }
 
-    const percent = (campanha.valorAtual / campanha.metaArrecadacao) * 100;
+    const percent = (campanha.valorArrecadado / campanha.metaArrecadacao) * 100;
 
     // Limita a 100% para não estourar a barra
     return `${Math.min(percent, 100)}%`;

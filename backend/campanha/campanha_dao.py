@@ -20,6 +20,10 @@ class CampanhaDAO(BaseDAO):
         parametros = [datetime.datetime.now(), datetime.datetime.now(), itensPorPagina, offset]
         return self.obterRegistrosPorParametros("select id, nome, descricao, dt_inicio, dt_fim, meta_arrecadacao from campanhas where dt_inicio <= ? and dt_fim >= ? LIMIT ? OFFSET ?", parametros)
 
+    def obterCampanhasComArrecadacao(self, itensPorPagina, offset):
+        parametros = [itensPorPagina, offset]
+        return self.obterRegistrosPorParametros("select c.id, c.nome, c.descricao, c.dt_inicio, c.dt_fim, c.meta_arrecadacao, sum(d.valor_doado) as arrecadado from campanhas c left outer join doacoes d on c.id = d.id_campanha group by c.id, c.nome, c.descricao, c.dt_inicio, c.dt_fim, c.meta_arrecadacao LIMIT ? OFFSET ?", parametros)
+
     def obterQtdCampanhas(self):
         qtdCampanhas =  self.obterRegistro("select count(*) from campanhas")
         return qtdCampanhas[0]

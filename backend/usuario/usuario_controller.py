@@ -29,6 +29,22 @@ class UsuarioBC:
         return usuario
 
     @loginRequired
+    def obterUsuarios(self, usuarioLogado, pagina, itensPorPagina, offset):
+        if usuarioLogado.tipo != TipoUsuario.ADMIN.name:
+            return {"msg":"Apenas um administrador pode listar usuários"}, 422
+        if usuarioLogado.primeiroAcesso:
+            return {"msg":"É preciso alterar a senha antes de fazer qualquer operação"}, 422
+        qtdUsuarios = self.usuarioDAO.obterQtdUsuarios()
+        usuarios = [{'id':tuplaUsuario[0], 'cpf': tuplaUsuario[1], 'nome': tuplaUsuario[2], 'email': tuplaUsuario[3], 'telefone': tuplaUsuario[4], 'primeiroAcesso': True if tuplaUsuario[5] else False, 'tipo': tuplaUsuario[6]} for tuplaUsuario in self.usuarioDAO.obterUsuarios(itensPorPagina, offset)]
+        return jsonify({
+            'usuarios': usuarios,
+            'total': qtdUsuarios,
+            'pagina': pagina,
+            'itensPorPagina': itensPorPagina,
+            'qtdPpaginas': qtdUsuarios // itensPorPagina + (1 if qtdUsuarios % itensPorPagina > 0 else 0)
+        }), 200
+
+    @loginRequired
     def obterDoadores(self, usuarioLogado, pagina, itensPorPagina, offset):
         if usuarioLogado.tipo != TipoUsuario.ADMIN.name:
             return {"msg":"Apenas um administrador pode listar doadores"}, 422

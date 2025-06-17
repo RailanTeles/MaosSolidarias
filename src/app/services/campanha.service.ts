@@ -33,7 +33,7 @@ export class CampanhaService {
   // Pegar todas as campanhas
   obterCampanhas(pagina: number): Observable<any> {
     return this.http.get<any>(
-      `${this.campanhaURL}?pagina=${pagina}&itensPorPagina=2`,
+      `${this.campanhaURL}/arrecadado?pagina=${pagina}&itensPorPagina=2`,
       { headers: this.headers }
     );
   }

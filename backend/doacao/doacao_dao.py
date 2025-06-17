@@ -21,7 +21,4 @@ class DoacaoDAO(BaseDAO):
 
     def salvar(self, numeroCartao, nomeCartao, dtValidadeCartao, codigoSegurancaCartao, valorDoado, idDoador, idCampanha):
         parametros = [numeroCartao, nomeCartao, dtValidadeCartao, codigoSegurancaCartao, valorDoado, idDoador, idCampanha]
-        return self.executarComandoDML(
-                    "insert into doacoes (numero_cartao, nome_cartao, dt_validade_cartao, codigo_seguranca_cartao, valor_doado, id_doador, id_campanha) values (?, ?, ?, ?, ?, ?, ?)",
-                    parametros
-                    )
+        return self.executarComandoDML("insert into doacoes (numero_cartao, nome_cartao, dt_validade_cartao, codigo_seguranca_cartao, valor_doado, id_doador, id_campanha) values (?, ?, ?, ?, ?, ?, ?)", parametros)
