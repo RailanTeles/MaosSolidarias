@@ -8,7 +8,6 @@ import { CampanhaService } from '../../services/campanha.service';
 import { DoacaoService } from '../../services/doacao.service';
 import { FormFazerDoacaoComponent } from './form-fazer-doacao/form-fazer-doacao.component';
 import { FormEditCampanhaComponent } from './form-edit-campanha/form-edit-campanha.component';
-import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-campanhas',
@@ -55,6 +54,7 @@ export class CampanhasComponent {
   }
 
   // Métodos
+  // Adicionar uma Campanha
   FormCampanha() {
     if (this.abrirFormCampanha == false) {
       this.abrirFormCampanha = true;
@@ -63,6 +63,7 @@ export class CampanhasComponent {
     }
   }
 
+  // Fazer uma Doação
   FormDoacao(idCampanha?: number) {
     if (this.abrirFormDoacao == false) {
       this.abrirFormDoacao = true;
@@ -75,6 +76,7 @@ export class CampanhasComponent {
     }
   }
 
+  // Editar uma Campanha
   FormEditar(idCampanha?: number) {
     if (this.abrirFormEdit == false) {
       this.abrirFormEdit = true;
@@ -115,7 +117,7 @@ export class CampanhasComponent {
                 );
 
                 if (campanhaNaLista) {
-                  campanhaNaLista.valorAtual = valorTotalDoado || 0;
+                  campanhaNaLista.valorAtual = parseFloat((valorTotalDoado || 0).toFixed(2));
                 }
               },
               error: (err) => {
