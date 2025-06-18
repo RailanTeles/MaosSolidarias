@@ -122,7 +122,7 @@ export class CampanhasComponent {
 
           this.listacampanhas = res.campanhasAtivas;
           this.tamanhoCampanha = res.qtdPaginas;
-          this.paginaSelecionada = pagina;
+          this.paginaSelecionada = res.pagina;
         },
         error: (err) => {
           console.log(err);

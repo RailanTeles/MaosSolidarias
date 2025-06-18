@@ -11,10 +11,7 @@ import { AuthService } from './auth.service';
 export class UsuarioService {
   private readonly baseUrl = 'http://localhost:5000/api/v1';
 
-  constructor(
-    private http: HttpClient,
-    private injector: Injector   
-  ) {}
+  constructor(private http: HttpClient, private injector: Injector) {}
 
   private get headers(): HttpHeaders {
     const auth = this.injector.get(AuthService);
@@ -25,20 +22,24 @@ export class UsuarioService {
     });
   }
 
+  // Cadastrar Admin
   cadastrarAdmin(admin: Usuario): Observable<any> {
-    return this.http.post<any>(
-      `${this.baseUrl}/admin`,
-      admin,
-      { headers: this.headers }
-    );
+    return this.http.post<any>(`${this.baseUrl}/admin`, admin, {
+      headers: this.headers,
+    });
   }
 
+  // Cadastrar Doador
   cadastrarDoador(doador: Usuario): Observable<any> {
-    return this.http.post<any>(
-      `${this.baseUrl}/doador`,
-      doador,
-      { headers: this.headers }
-    );
+    return this.http.post<any>(`${this.baseUrl}/doador`, doador, {
+      headers: this.headers,
+    });
   }
 
+  // Pegar todos os usuários
+  obterUsuarios(page: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/usuario?pagina=${page}&itensPorPagina=4`, {
+      headers: this.headers,
+    });
+  }
 }

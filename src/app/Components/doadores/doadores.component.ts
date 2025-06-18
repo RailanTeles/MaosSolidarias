@@ -42,6 +42,7 @@ export class DoadoresComponent {
         console.log(err);
       },
     });
+    this.atualizarDoadores(1);
   }
 
   // Métodos
@@ -64,47 +65,15 @@ export class DoadoresComponent {
   }
 
   atualizarDoadores(pagina: number) {
-      // this.usuarioService.
-  //   this.campanhaService.obterCampanhas(pagina).subscribe({
-  //     next: (res) => {
-  //       if (res.campanhas) {
-  //         res.campanhas.forEach((campanha: any) => {
-  //           campanha.dtInicio = campanha.dtInicio.substring(0, 10);
-  //           campanha.dtFim = campanha.dtFim.substring(0, 10);
-  //         });
-  //       }
-
-  //       this.listacampanhas = res.campanhas;
-  //       // Pegar as doações
-  //       res.campanhas.forEach((campanha: any) => {
-  //         this.doacaoService.obterDoacoesId(campanha.id).subscribe({
-  //           next: (res) => {
-  //             let valorTotalDoado = 0;
-  //             if (res.doacoes) {
-  //               res.doacoes.forEach((doacao: any) => {
-  //                 valorTotalDoado += doacao.valorDoado;
-  //               });
-  //             }
-  //             const campanhaNaLista = this.listacampanhas.find(
-  //               (c: Campanha) => c.id === campanha.id
-  //             );
-
-  //             if (campanhaNaLista) {
-  //               campanhaNaLista.valorAtual = valorTotalDoado || 0;
-  //             }
-  //           },
-  //           error: (err) => {
-  //             console.log(err);
-  //           },
-  //         });
-  //       });
-
-  //       this.tamanhoCampanha = res.qtdPaginas;
-  //       this.paginaSelecionada = pagina;
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //     },
-  //   });
+    this.usuarioService.obterUsuarios(pagina).subscribe({
+      next: (res) => {
+        this.listaDoadores = res.usuarios;
+        this.tamanhoDoadores = res.qtdPaginas;
+        this.paginaSelecionada = res.pagina;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
