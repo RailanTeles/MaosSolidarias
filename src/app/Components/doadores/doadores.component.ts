@@ -54,6 +54,7 @@ export class DoadoresComponent {
     }
   }
 
+  // Pegar a Info do Doador
   FormInfo(idDoador?: number) {
     if (this.abrirInfoDoador == false) {
       this.abrirInfoDoador = true;
@@ -64,6 +65,7 @@ export class DoadoresComponent {
     }
   }
 
+  // Pegar todos os doadores
   atualizarDoadores(pagina: number) {
     this.usuarioService.obterUsuarios(pagina).subscribe({
       next: (res) => {

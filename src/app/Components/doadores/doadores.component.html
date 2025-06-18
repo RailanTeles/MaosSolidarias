@@ -5,6 +5,13 @@
   <button id="AdicionarButton" (click)="FormDoador()">+ Adicionar</button>
   }
 </div>
+@if(listaDoadores && listaDoadores.length < 0){
+  <p>A</p>
+} @else {
+  <div class="SemDoadores">
+    <p>Sem doadores cadastrados</p>
+  </div>
+}
 
 <!-- Modal Criar Campanha -->
 @if (abrirFormDoador) {
