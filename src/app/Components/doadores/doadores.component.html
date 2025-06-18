@@ -5,12 +5,38 @@
   <button id="AdicionarButton" (click)="FormDoador()">+ Adicionar</button>
   }
 </div>
-@if(listaDoadores && listaDoadores.length < 0){
-  <p>A</p>
-} @else {
-  <div class="SemDoadores">
-    <p>Sem doadores cadastrados</p>
+@if(listaDoadores && listaDoadores.length > 0){
+<div id="DoadoresDiv">
+  @for(doador of listaDoadores; track doador.id){
+  <div class="Doador">
+    <div class="Section">
+      <p class="nome">{{ doador.nome }}</p>
+      <p (click)="FormInfo(doador.id)" class="Info">i</p>
+    </div>
+    <div class="Section">
+      <p class="email">{{ doador.email }}</p>
+    </div>
   </div>
+  }
+</div>
+} @else {
+<div class="SemDoadores">
+  <p>Sem doadores cadastrados</p>
+</div>
+}
+
+<!-- Paginação -->
+@if (listaDoadores.length > 0) {
+<div class="paginacao">
+  @for (item of [].constructor(tamanhoDoadores); track i; let i = $index) { @if
+  ((i + 1) == paginaSelecionada){
+  <button class="pages selectPage" (click)="atualizarDoadores(i + 1)">
+    {{ i + 1 }}
+  </button>
+  } @else {
+  <button class="pages" (click)="atualizarDoadores(i + 1)">{{ i + 1 }}</button>
+  } }
+</div>
 }
 
 <!-- Modal Criar Campanha -->
@@ -21,5 +47,17 @@
     (fechar)="FormDoador()"
     (atualizar)="atualizarDoadores(paginaSelecionada)"
   ></app-form-doador>
+</div>
+}
+
+<!-- Modal Criar Campanha -->
+@if (abrirInfoDoador) {
+<div id="modalDiv">
+  <div id="modal" (click)="FormInfo()"></div>
+  <app-form-info-doador
+    (fechar)="FormInfo()"
+    (atualizar)="atualizarDoadores(paginaSelecionada)"
+    
+  ></app-form-info-doador>
 </div>
 }

@@ -1,50 +1,196 @@
-#title{
-    display: flex;
+#title {
+  display: flex;
+  width: 100%;
+  padding: 1%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#title > h1 {
+  font-size: 50px;
+  color: #a90713;
+  font-family: "Outfit SemiBold";
+}
+
+#AdicionarButton {
+  position: absolute;
+  right: 0;
+  margin-right: 2%;
+  background-color: #e81e2d;
+  padding: 1% 5%;
+  color: white;
+  font-size: 25px;
+  border: none;
+  border-radius: 15px;
+  font-family: "Outfit SemiBold";
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#AdicionarButton:hover {
+  background-color: #a90713;
+  transform: scale(1.1);
+}
+
+.SemDoadores {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.SemDoadores > p {
+  font-size: 40px;
+  font-weight: bold;
+  color: #a90713;
+}
+
+#DoadoresDiv{
     width: 100%;
-    padding: 1%;
+    height: 50%;
     align-items: center;
     justify-content: center;
-    position: relative;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-#title > h1{
-    font-size: 50px;
-    color: #A90713;
-    font-family: "Outfit SemiBold";
+.Doador{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #a90713 solid 2px;
+    padding: 2%;
+    border-radius: 30px;
+    gap: 20px;
+    min-width: 300px;
 }
 
-#AdicionarButton{
-    position: absolute;
-    right: 0;
-    margin-right: 2%;
-    background-color: #E81E2D;
-    padding: 1% 5%;
+.Section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nome{
+    width: 70%;
+    background-color: #a90713;
     color: white;
-    font-size: 25px;
-    border: none;
-    border-radius: 15px;
-    font-family: "Outfit SemiBold";
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.Info{
+    aspect-ratio: 1/1;
+    background-color: #e81e2d;
+    color: white;
+    padding: 2% 3%;
+    border-radius: 10px;
+    text-align: center;
     cursor: pointer;
+    font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease; 
 }
 
-#AdicionarButton:hover{
+.Info:hover{
     background-color: #A90713;
     transform: scale(1.1);
 }
 
-
-.SemDoadores{
+.email{
     width: 100%;
-    height: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    background-color: #a90713;
+    color: white;
+    padding: 2%;
+    border-radius: 10px;
 }
 
-.SemDoadores > p{
-    font-size: 40px;
-    font-weight: bold;
-    color: #A90713;
+.paginacao {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 2% 0%;
+  gap: 20px;
+}
+
+.pages {
+  background-color: #e81e2d;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.1s ease;
+  color: white;
+}
+
+.pages:hover {
+  transform: scale(1.2);
+}
+
+.selectPage {
+  background-color: #a90713;
+}
+
+#modalDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+app-form-doador {
+  width: 80%;
+  height: 98%;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5%;
+  position: relative;
+  z-index: 12;
+  justify-content: space-evenly;
+}
+
+app-form-info-doador {
+  width: 80%;
+  height: 98%;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5%;
+  position: relative;
+  z-index: 12;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 780px){
+
 }

@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../../services/auth.service';
-import { CampanhaService } from '../../services/campanha.service';
-import { DoacaoService } from '../../services/doacao.service';
 import { Usuario } from '../../models/usuario.model';
 import { FormDoadorComponent } from './form-doador/form-doador.component';
 import { UsuarioService } from '../../services/usuario.service';
-import { Route } from '@angular/router';
-import { Token } from '@angular/compiler';
+import { FormInfoDoadorComponent } from './form-info-doador/form-info-doador.component';
 
 @Component({
   selector: 'app-doadores',
-  imports: [NavbarComponent, FormDoadorComponent],
+  imports: [NavbarComponent, FormDoadorComponent, FormInfoDoadorComponent],
   templateUrl: './doadores.component.html',
   styleUrl: './doadores.component.css',
 })
@@ -70,7 +67,7 @@ export class DoadoresComponent {
     this.usuarioService.obterUsuarios(pagina).subscribe({
       next: (res) => {
         this.listaDoadores = res.usuarios;
-        this.tamanhoDoadores = res.qtdPaginas;
+        this.tamanhoDoadores = res.qtdPpaginas;
         this.paginaSelecionada = res.pagina;
       },
       error: (err) => {
