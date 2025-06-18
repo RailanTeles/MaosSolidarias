@@ -38,7 +38,27 @@ export class UsuarioService {
 
   // Pegar todos os usuários
   obterUsuarios(page: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/usuario?pagina=${page}&itensPorPagina=4`, {
+    return this.http.get(
+      `${this.baseUrl}/usuario?pagina=${page}&itensPorPagina=4`,
+      {
+        headers: this.headers,
+      }
+    );
+  }
+
+  // Editar Informações do Usuário
+  alterarDados(idUser: number, usuario: Usuario): Observable<any> {
+    var usuarioJson = JSON.stringify(usuario);
+    return this.http.put<any>(
+      `${this.baseUrl}/usuario/${idUser}`,
+      usuarioJson,
+      { headers: this.headers }
+    );
+  }
+
+  // Excluir Doador
+  excluirDoador(idUser: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/doador/${idUser}`, {
       headers: this.headers,
     });
   }

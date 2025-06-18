@@ -14,7 +14,7 @@
       <p (click)="FormInfo(doador.id)" class="Info">i</p>
     </div>
     <div class="Section">
-      <p class="email">{{ doador.email }}</p>
+      <p class="email">{{ doador.email }} - {{doador.tipo}} </p>
     </div>
   </div>
   }
@@ -57,7 +57,7 @@
   <app-form-info-doador
     (fechar)="FormInfo()"
     (atualizar)="atualizarDoadores(paginaSelecionada)"
-    
+    [doador]="doadorSelecionado"
   ></app-form-info-doador>
 </div>
 }

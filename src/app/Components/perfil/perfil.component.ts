@@ -41,7 +41,7 @@ export class PerfilComponent {
 
         this.form_dados = new FormGroup({
           nome: new FormControl(this.user.nome, Validators.required),
-          email: new FormControl(this.user.email, Validators.required),
+          email: new FormControl(this.user.email, [Validators.required, Validators.email]),
           telefone: new FormControl(this.user.telefone, Validators.required),
         });
       },
@@ -83,7 +83,7 @@ export class PerfilComponent {
       });
     } else {
       this.corMensagem = 'red';
-      this.mensagem = 'Erro! Os seguintes campos não foram preenchdidos: <br>';
+      this.mensagem = 'Erro! Os seguintes campos não foram preenchidos: <br>';
       const controls = this.form_dados.controls;
       if (controls['nome'].errors) this.mensagem += 'Nome,';
       if (controls['email'].errors) this.mensagem += ' Email, ';

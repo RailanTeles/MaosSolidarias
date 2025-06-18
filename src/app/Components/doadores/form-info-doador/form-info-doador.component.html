@@ -1,1 +1,59 @@
-<p>form-info-doador works!</p>
+@if (form_dados && doador) {
+    <h1 id="Sair" (click)="fecharModal()">X</h1>
+    
+  <form
+  [formGroup]="form_dados"
+  (ngSubmit)="AlterarInformacoes($event)"
+  id="FormCampanha"
+>
+  <h1>Perfil de: <br> {{doador.nome}} </h1>
+
+  <div class="FormComp">
+    <label for="nome">Nome:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="nome"
+      required
+      formControlName="nome"
+    />
+  </div>
+  <div class="FormComp">
+    <label for="telefone">Telefone:</label>
+    <input
+      class="inputs"
+      type="text"
+      id="telefone"
+      required
+      formControlName="telefone"
+    />
+  </div>
+  <div class="FormComp">
+    <label for="email">E-mail:</label>
+    <input
+      class="inputs"
+      type="email"
+      id="email"
+      required
+      formControlName="email"
+    />
+  </div>
+  <div class="FormComp">
+    <label for="senha">Senha:</label>
+    <input
+      class="inputs"
+      type="password"
+      id="senha"
+      required
+      formControlName="senha"
+    />
+  </div>
+  <div class="buttons">
+    <button type="submit" id="submit">Salvar Alterações</button>
+    <button type="button" id="delete" (click)="excluirDoador()">Remover Usuário</button>
+  </div>
+  @if(mensagem){
+  <p [style.color]="corMensagem" id="mensagem" [innerHTML]="mensagem"></p>
+  }
+</form>
+}
